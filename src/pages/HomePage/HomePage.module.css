@@ -1,0 +1,21 @@
+/*.homePage {*/
+/*    display: grid;*/
+/*    grid-template-areas: "sidebar" "content"*/
+/*                            "sidebar" "content"*/
+/*                            "sidebar" "content";*/
+/*}*/
+
+/*.homePage__content {*/
+/*    !*width: 100vw;*!*/
+/*    height: 10vh;*/
+/*    !*transform: scale(0.5);*!*/
+/*}*/
+
+.homePage {
+    width: 100vw;
+    margin: 0;
+}
+
+.homePage__content {
+    margin-left: 28vw;
+}

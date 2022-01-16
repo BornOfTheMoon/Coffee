@@ -1,0 +1,35 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: url("../../images/sidebarBackground.jpg");
+    width: 28vw;
+    height: 100vh;
+    position: fixed;
+}
+
+.sidebar__logo {
+    fill: black;
+    width: 5vw;
+    align-self: center;
+}
+
+.sidebar__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar__footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.sidebar__footer_places, .sidebar__footer_time {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar__footer_places > p, .sidebar__footer_time > p {
+    color: black;
+}

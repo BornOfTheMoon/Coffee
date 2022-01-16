@@ -1,0 +1,9 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: url("../../images/sidebarBackground.jpg");
+    width: 28vw;
+    height: 100vh;
+    position: fixed;
+}
