@@ -5,7 +5,7 @@ import Login from "../../components/Login/Login";
 function HomePage() {
     return (
         <div className={styles.loginPage}>
-            <Login item=""/>
+            <Login/>
             <UniversalContent className={styles.loginPage__content}/>
         </div>
     )

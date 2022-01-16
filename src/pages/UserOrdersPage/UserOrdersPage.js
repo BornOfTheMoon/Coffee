@@ -5,7 +5,7 @@ import UserOrders from "../../components/UserOrders/UserOrders";
 function UserOrdersPage() {
     return (
         <div className={styles.userOrdersPage}>
-            <Sidebar/>
+            <Sidebar item="orders"/>
             <div className={styles.userOrdersPage__content}>
                 <UserOrders/>
             </div>

@@ -5,7 +5,7 @@ import Profile from "../../components/Profile/Profile";
 function ProfilePage() {
     return (
         <div className={styles.profilePage}>
-            <Sidebar/>
+            <Sidebar item="profile"/>
             <Profile/>
         </div>
     )

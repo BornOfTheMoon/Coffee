@@ -1,20 +1,21 @@
 import logo from "../../images/logo.svg"
 import SidebarItem from "./SidebarItem.js"
 import styles from "./Sidebar.module.css"
+import {NavLink} from "react-router-dom";
 
 const userData = [{text: "меню", type: "menu"},
                 {text: "корзина", type: "basket"},
                 {text: "личный кабинет", type: "profile"},
-                {text: "мои заказы", type: "history"}]
+                {text: "мои заказы", type: "orders"}]
 const employeeData = [{text: "меню", type: "menu"},
                     {text: "корзина", type: "basket"},
                     {text: "личный кабинет", type: "profile"},
-                    {text: "мои заказы", type: "history"},
-                    {text: "текущие заказы", type: "orders"}]
+                    {text: "мои заказы", type: "orders"},
+                    {text: "текущие заказы", type: "cur_orders"}]
 const managerData = [{text: "меню", type: "menu"},
                     {text: "корзина", type: "basket"},
                     {text: "личный кабинет", type: "profile"},
-                    {text: "мои заказы", type: "history"},
+                    {text: "мои заказы", type: "orders"},
                     {text: "сотрудники", type: "employees"}]
 
 const user = "user"
@@ -30,10 +31,13 @@ function Sidebar({item}) {
     }
     return (
         <div className={styles.sidebar}>
-             <img src={logo} className={styles.sidebar__logo}/>
+            <NavLink to="/home" className={styles.sidebar__logo}>
+                <img src={logo} className={styles.sidebar__logo}/>
+            </NavLink>
              <div className={styles.sidebar__content}>
                 {options.map((option)=> <SidebarItem text={option.text}
-                                                  active={(option.type === item)}/>)}
+                                                  active={(option.type === item)}
+                                                    link={"/" + option.type}/>)}
              </div>
              <div className={styles.sidebar__footer}>
                  <div className={styles.sidebar__footer_places}>

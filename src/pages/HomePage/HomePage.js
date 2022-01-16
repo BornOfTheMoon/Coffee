@@ -6,7 +6,7 @@ import UniversalContent from "../../components/UniversalContent/UniversalContent
 function HomePage() {
     return (
         <div className={styles.homePage}>
-            <Sidebar item=""/>
+            <Sidebar item="home"/>
             <UniversalContent className={styles.homePage__content}/>
         </div>
     )

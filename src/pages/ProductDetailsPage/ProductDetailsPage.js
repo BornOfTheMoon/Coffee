@@ -5,7 +5,7 @@ import ProductDetails from "../../components/ProductDetails/ProductDetails";
 function ProductDetailsPage() {
     return (
         <div className={styles.productDetailsPage}>
-            <Sidebar/>
+            <Sidebar item="menu"/>
             <div className={styles.productDetailsPage__content}>
                 <ProductDetails/>
             </div>

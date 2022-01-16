@@ -2,9 +2,13 @@
     align-self: center;
 }
 
+.sidebarItem > .NavLink, .sidebarItemActive > .NavLink {
+    text-decoration: none;
+}
+
 .sidebarItem__text {
     color: black;
-    font-weight: normal;
+
 }
 
 .sidebarItemActive__text {
