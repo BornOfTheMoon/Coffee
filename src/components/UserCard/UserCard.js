@@ -26,17 +26,19 @@ function UserCard({user}) {
             <p className={styles.userCard__title}>{title}</p>
             <div className={styles.userCard__content}>
                 <img src={avatar} className={styles.userCard__content_avatar}/>
-                <div className={styles.userCard__content_mainInfo}>
-                    <p>{user.username}</p>
-                    <p>{user.name}</p>
-                </div>
-                <div className={styles.userCard__content_addInfo}>
-                    <p>Достижение: {achievement}</p>
-                    <div className={styles.userCard__content_addInfo_karma}>
-                        <p>Карма:</p>
-                        {user.karma.map((option)=> <img src={star}/>)}
+                <div className={styles.userCard__info}>
+                    <div className={styles.userCard__content_mainInfo}>
+                        <p>Username: {user.username}</p>
+                        <p>Name: {user.name}</p>
                     </div>
-                    {workPlace.map((option)=> <p>Точка работы: {user.place}</p>)}
+                    <div className={styles.userCard__content_addInfo}>
+                        <p>Достижение: {achievement}</p>
+                        <div className={styles.userCard__content_addInfo_karma}>
+                            <p>Карма:</p>
+                            {user.karma.map((option)=> <img src={star}/>)}
+                        </div>
+                        {workPlace.map((option)=> <p>Точка работы: {user.place}</p>)}
+                    </div>
                 </div>
             </div>
         </div>

@@ -6,6 +6,39 @@
     width: 28vw;
     height: 100vh;
     position: fixed;
+    align-items: center;
+}
+
+.login__logo {
+    fill: black;
+    width: 5vw;
+    align-self: center;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    height: 25vh;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login__form > input {
+    width: 15vw;
+    height: 3vh;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: wheat;
+}
+
+.login__form > input:focus {
+    outline: none;
+}
+
+.login__form_button {
+    width: 10vw;
+    border-radius: 10px;
+    margin-top: 6vh;
 }
 
 .login__link {

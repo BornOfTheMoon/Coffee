@@ -1,0 +1,30 @@
+.userCard {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    background: #EAE2D8;
+    background-blend-mode: overlay;
+    padding: 3vh 2vw;
+    border-radius: 50px;
+    box-shadow: inset 0 0 2px black;
+}
+
+.userCard__title {
+    margin-top: 0;
+    text-align: center;
+}
+
+.userCard__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.userCard__content_avatar {
+    border-radius: 40px;
+}
+
+.userCard__info {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,9 +1,13 @@
 import styles from "./Register.module.css"
 import {NavLink} from "react-router-dom";
+import logo from "../../images/logo.svg";
 
 function Register() {
     return (
         <div className={styles.register}>
+            <NavLink to="/home" className={styles.register__logo}>
+                <img src={logo} className={styles.register__logo}/>
+            </NavLink>
             <form className={styles.register__form}>
                 <input
                     placeholder="Введите логин"

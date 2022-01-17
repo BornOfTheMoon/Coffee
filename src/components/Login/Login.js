@@ -1,9 +1,13 @@
 import styles from "./Login.module.css"
 import {NavLink} from "react-router-dom";
+import logo from "../../images/logo.svg";
 
 function Login() {
     return (
         <div className={styles.login}>
+            <NavLink to="/home" className={styles.login__logo}>
+                <img src={logo} className={styles.login__logo}/>
+            </NavLink>
             <form className={styles.login__form}>
                 <input
                     placeholder="Введите логин"
