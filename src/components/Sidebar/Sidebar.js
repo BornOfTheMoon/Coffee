@@ -41,15 +41,15 @@ function Sidebar({item}) {
              </div>
              <div className={styles.sidebar__footer}>
                  <div className={styles.sidebar__footer_places}>
-                     <p>Точки работы:</p>
-                     <p>Корпус D 5, 7 этажи</p>
-                     <p>Корпус A 6 этаж</p>
+                     <p className={styles.sidebar__footer_places_title}>Точки работы:</p>
+                     <p className={styles.sidebar__footer_places_text}>Корпус D 5, 7 этажи</p>
+                     <p className={styles.sidebar__footer_places_text}>Корпус A 6 этаж</p>
                  </div>
                  <div className={styles.sidebar__footer_time}>
-                     <p>Вечерние скидки:</p>
-                     <p>пн-пт: 18:00-22:00</p>
-                     <p>сб: 18:00-22:00</p>
-                     <p>вс: 18:00-22:00</p>
+                     <p className={styles.sidebar__footer_time_title}>Вечерние скидки:</p>
+                     <p className={styles.sidebar__footer_time_text}>пн-пт: 18:00-22:00</p>
+                     <p className={styles.sidebar__footer_time_text}>сб: 18:00-22:00</p>
+                     <p className={styles.sidebar__footer_time_text}>вс: 18:00-22:00</p>
                  </div>
              </div>
         </div>

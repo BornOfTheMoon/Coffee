@@ -1,12 +1,13 @@
 .register {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     background: url("../../images/sidebarBackground.jpg");
     width: 28vw;
-    height: 100vh;
+    height: 87vh;
     position: fixed;
     align-items: center;
+    padding: 8vh 0 5vh;
 }
 
 .register__logo {
@@ -18,7 +19,7 @@
 .register__form {
     display: flex;
     flex-direction: column;
-    height: 30vh;
+    height: 27vh;
     justify-content: space-between;
     align-items: center;
 }
@@ -27,8 +28,7 @@
     width: 15vw;
     height: 3vh;
     border-radius: 10px;
-    border-style: solid;
-    border-color: wheat;
+    border-style: outset;
 }
 
 .register__form > input:focus {
@@ -38,10 +38,12 @@
 .register__form_button {
     width: 10vw;
     border-radius: 10px;
-    margin-top: 6vh;
+    margin-top: 4vh;
+    background-color: rgba(236, 234, 234, 0.1);
 }
 
 .register__link {
     color: black;
+    font-size: 14px;
     /*text-decoration: none;*/
 }
