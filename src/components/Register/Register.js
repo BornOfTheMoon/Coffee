@@ -1,4 +1,5 @@
 import styles from "./Register.module.css"
+import {NavLink} from "react-router-dom";
 
 function Register() {
     return (
@@ -23,7 +24,7 @@ function Register() {
                     Войти
                 </button>
             </form>
-            <p>Уже есть аккаунт? Войти!</p>
+            <NavLink to="/login" className={styles.register__link}>Уже есть аккаунт? Войти!</NavLink>
         </div>
     )
 }
