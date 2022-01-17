@@ -17,7 +17,7 @@ const port = 8000
 mongoose.connect(process.env.MONGO_URI, () => console.log("Mongo connected successfully!"))
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`App listening at http://localhost:${port}`)
 })
 
 app.use(cookieParser());

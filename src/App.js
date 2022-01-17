@@ -9,6 +9,7 @@ import MenuPage from "./pages/MenuPage/MenuPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 import UserOrdersPage from "./pages/UserOrdersPage/UserOrdersPage";
 
+
 function App() {
     return (
         <Router>

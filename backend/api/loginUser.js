@@ -22,9 +22,8 @@ router.post('/', async (req, res) => {
                 const secret = process.env.TOKEN_SECRET;
                 const payload = { username };
                 const token = jwt.sign(payload, secret, {'expiresIn': '12h'});
-                console.log(token);
                 res.cookie('jwt', token, {'httpOnly': false}).status(200)
-                    .json({'success': true, 'token': token, 'message': 'Welcome back!'})
+                    .json({'token': token, 'redirect': '/home'})
             } else {
                 res.status(400).send('Wrong password')
             }
