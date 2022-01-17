@@ -1,10 +1,10 @@
-import mongoose from "mongoose";
-import express from "express";
-import dotenv from "dotenv";
-import cors from "cors"
-import cookieParser from "cookie-parser";
-import createUser from "./api/createUser.js"
-import loginUser from "./api/loginUser.js";
+const mongoose = require("mongoose");
+const express = require("express");
+const dotenv = require("dotenv");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const createUser = require("./api/createUser.js");
+const loginUser = require("./api/loginUser.js");
 
 const app = express()
 app.use(cors())

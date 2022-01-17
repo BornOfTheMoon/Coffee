@@ -1,6 +1,6 @@
-import express from "express"
-import { userModel } from "../models/UserModel.js";
-import bcrypt from "bcryptjs"
+const express = require("express");
+const userModel = require("../models/UserModel.js");
+const bcrypt = require("bcryptjs");
 
 const router = express.Router();
 
@@ -26,4 +26,4 @@ router.post('/', async (req, res) => {
     });
 });
 
-export default router
+module.exports = router;
