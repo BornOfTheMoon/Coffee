@@ -13,7 +13,7 @@ function UserCard({user}) {
 
     let achievement = "Пусто :("
     if (user.achievements.length !== 0) {
-        achievement = user.achievements[0].name
+        achievement = user.achievements[user.achievements.length - 1].name
     }
 
     let workPlace = []
@@ -28,14 +28,15 @@ function UserCard({user}) {
                 <img src={avatar} className={styles.userCard__content_avatar}/>
                 <div className={styles.userCard__info}>
                     <div className={styles.userCard__content_mainInfo}>
-                        <p>Username: {user.username}</p>
-                        <p>Name: {user.name}</p>
+                        <p>Логин: {user.username}</p>
+                        <p>Имя: {user.name}</p>
                     </div>
                     <div className={styles.userCard__content_addInfo}>
                         <p>Достижение: {achievement}</p>
                         <div className={styles.userCard__content_addInfo_karma}>
                             <p>Карма:</p>
-                            {user.karma.map((option)=> <img src={star}/>)}
+                            {user.karma.map((option)=> <img src={star}
+                                                            className={styles.userCard__content_karmaStar}/>)}
                         </div>
                         {workPlace.map((option)=> <p>Точка работы: {user.place}</p>)}
                     </div>

@@ -9,13 +9,13 @@ const user = {
     place: "D1",
     achievements: [
         {
+            name: "Новичок",
+            description: "купить кофе с 3 сиропами"
+        },
+        {
             name: "Уже смешарик",
             description: "купить 10 напитков"
         },
-        {
-            name: "Новичок",
-            description: "купить кофе с 3 сиропами"
-        }
     ],
     karma: [true, true, true, true],
 }

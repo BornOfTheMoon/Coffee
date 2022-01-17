@@ -1,0 +1,8 @@
+.achievementsItem {
+    display: flex;
+    width: 40vw;
+}
+
+.achievementsItem__name {
+    width: 15vw;
+}
