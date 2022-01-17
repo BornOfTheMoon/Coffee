@@ -1,12 +1,13 @@
 .login {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     background: url("../../images/sidebarBackground.jpg");
     width: 28vw;
-    height: 100vh;
+    height: 87vh;
     position: fixed;
     align-items: center;
+    padding: 8vh 0 5vh;
 }
 
 .login__logo {
@@ -18,7 +19,7 @@
 .login__form {
     display: flex;
     flex-direction: column;
-    height: 25vh;
+    height: 20vh;
     justify-content: space-between;
     align-items: center;
 }
@@ -27,8 +28,7 @@
     width: 15vw;
     height: 3vh;
     border-radius: 10px;
-    border-style: solid;
-    border-color: wheat;
+    border-style: outset;
 }
 
 .login__form > input:focus {
@@ -36,12 +36,15 @@
 }
 
 .login__form_button {
+    /*align-self: end;*/
     width: 10vw;
     border-radius: 10px;
-    margin-top: 6vh;
+    margin-top: 2vh;
+    background-color: rgba(236, 234, 234, 0.1);
 }
 
 .login__link {
     color: black;
+    font-size: 14px;
     /*text-decoration: none;*/
 }
