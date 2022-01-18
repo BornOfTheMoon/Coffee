@@ -5,6 +5,9 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const createUser = require("./api/createUser.js");
 const loginUser = require("./api/loginUser.js");
+const productRequests = require("./api/productRequests.js");
+const achievementRequests = require("./api/achievementsRequests.js");
+const orderRequests = require("./api/orderRequests.js");
 
 const app = express()
 app.use(cors())
@@ -23,3 +26,6 @@ app.listen(port, () => {
 app.use(cookieParser());
 app.use('/api/register', createUser);
 app.use('/api/login', loginUser);
+app.use('/api/product', productRequests)
+app.use('/api/achievement', achievementRequests)
+app.use('/api/order', orderRequests)
