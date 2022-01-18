@@ -1,7 +1,6 @@
 import styles from "./Login.module.css"
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink, useNavigate, Navigate} from "react-router-dom";
 import logo from "../../images/logo.svg";
-import PropTypes from "prop-types";
 
 
 async function loginUser(data) {
@@ -28,6 +27,10 @@ function Login() {
         navigate(token.redirect);
     }
 
+    if (localStorage.getItem('token')) {
+        return <Navigate to={"/home"}/>
+    }
+
     return (
         <div className={styles.login}>
             <NavLink to="/home" className={styles.login__logo}>
@@ -51,10 +54,6 @@ function Login() {
             <NavLink to="/register" className={styles.login__link}>Ещё нет аккаунта? Зарегестрироваться!</NavLink>
         </div>
     )
-}
-
-Login.propTypes = {
-    setToken: PropTypes.func.isRequired
 }
 
 export default Login
