@@ -1,6 +1,7 @@
 import styles from "./Login.module.css"
-import {NavLink, useNavigate, Navigate} from "react-router-dom";
+import {NavLink, Navigate, useLocation} from "react-router-dom";
 import logo from "../../images/logo.svg";
+import LoginPage from "../../pages/LoginPage/LoginPage";
 
 
 async function loginUser(data) {
@@ -14,24 +15,23 @@ async function loginUser(data) {
 }
 
 function Login() {
-    const navigate = useNavigate();
-
+    const location = useLocation();
+    console.log(location.state);
+    const path = location.state.from;
     const handleSubmit = async event => {
         event.preventDefault();
         const data = {
         username: event.target.elements.name.value,
         password: event.target.elements.password.value
         }
-        const token = await loginUser(data);
-        localStorage.setItem('token', token.token);
-        navigate(token.redirect);
+        let token;
+        token = await loginUser(data).catch(err => token = {token: 'error'});
+        if (token.token !== 'error') localStorage.setItem('token', token.token);
+        else return <Navigate to={'/login'} state={{from: path, children: <LoginPage/>}}/>
     }
-
     if (localStorage.getItem('token')) {
-        return <Navigate to={"/home"}/>
-    }
-
-    return (
+        return <Navigate to={path === '/login'}/>
+    } else return (
         <div className={styles.login}>
             <NavLink to="/home" className={styles.login__logo}>
                 <img src={logo} className={styles.login__logo} alt={'logo'}/>

@@ -9,6 +9,7 @@ import MenuPage from "./pages/MenuPage/MenuPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 import UserOrdersPage from "./pages/UserOrdersPage/UserOrdersPage";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
+import RequireUnauth from "./components/RequireAuth/RequireUnauth";
 
 
 function App() {
@@ -20,7 +21,9 @@ function App() {
                     <Route path="/profile" element={<RequireAuth>
                         <ProfilePage/>
                     </RequireAuth>}/>
-                    <Route path="/login" element={<LoginPage/>}/>
+                    <Route path="/login" element={<RequireUnauth>
+                        <LoginPage/>
+                    </RequireUnauth>}/>
                     <Route path="/register" element={<RegisterPage/>}/>
                     <Route path="/menu" element={<MenuPage/>}/>
                     <Route path="/product" element={<ProductDetailsPage/>}/>
@@ -28,7 +31,9 @@ function App() {
                     <Route path="/orders" element={<RequireAuth>
                         <UserOrdersPage/>
                     </RequireAuth>}/>
-                    <Route path="/" element={<RegisterPage/>}/>
+                    <Route path="/" element={<RequireUnauth>
+                        <RegisterPage/>
+                    </RequireUnauth>}/>
                 </Routes>
             </div>
         </Router>
