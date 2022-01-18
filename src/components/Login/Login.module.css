@@ -36,7 +36,6 @@
 }
 
 .login__form_button {
-    /*align-self: end;*/
     width: 10vw;
     border-radius: 10px;
     margin-top: 2vh;
@@ -46,5 +45,4 @@
 .login__link {
     color: black;
     font-size: 14px;
-    /*text-decoration: none;*/
 }
