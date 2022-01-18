@@ -1,10 +1,12 @@
 .productCard {
     display: flex;
-    width: 40vw;
+    width: 35vw;
     padding: 3vh 2vw;
     margin-bottom: 2vh;
     border-radius: 20px;
-    border: inset 1px black;
+    background: #EAE2D8;
+    background-blend-mode: overlay;
+    box-shadow: -1px 1px 8px black;
 }
 
 .productCard > img {
