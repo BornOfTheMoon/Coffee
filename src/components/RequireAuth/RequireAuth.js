@@ -1,32 +1,46 @@
 import verifyUser from "../../verifyUser";
 import {useLocation, Navigate} from "react-router";
-import {useEffect, useState} from "react";
-import {cleanup} from "@testing-library/react";
+import {useEffect, useRef, useState} from "react";
 
 function RequireAuth({ children }) {
-    console.log('auth')
-    let [user, setUser] = useState('');
+    const state = useLocation().state;
+    const isMountedRef = useRef(null);
+    const controller = new AbortController();
+    const location = useLocation();
+    const [auth, setAuth] = useState(false)
     let [error, setError] = useState('');
-    async function getUser() {
+    async function getAuth() {
         try {
             const res = await verifyUser(localStorage.getItem('token'));
-            setUser(res);
-            console.log(res);
+            setAuth(res !== null && res !== undefined && res);
         } catch (e) {
             setError(e);
         }
     }
 
     useEffect(() => {
-        getUser();
-        return cleanup();
+        if (!state) {
+            isMountedRef.current = true;
+            getAuth().then(r => r);
+            return () => {
+                isMountedRef.current = false;
+                controller.abort();
+            };
+        }
     }, [])
-    let location = useLocation();
-    console.log(localStorage.getItem('token'));
 
-    if (user === null || user === undefined || !user) {
-        return <Navigate to="/login" state={{from: location.pathname}}/>;
+    if (state) {
+        if (state.auth) {
+            return children;
+        } else {
+            return <Navigate to="/login" state={{from: location.pathname, auth: false}}/>;
+        }
     }
+
+    if (!auth) {
+        return <Navigate to="/login" state={{from: location.pathname, auth: false}}/>;
+    }
+
 
     return children;
 }

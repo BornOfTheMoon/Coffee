@@ -10,9 +10,7 @@ const router = express.Router();
 
 router.post('/', (req, res) => {
     const {token}= req.body;
-    console.log(token);
     let user = jwt.verify(token, process.env.TOKEN_SECRET);
-    console.log(user)
     if (user) {
         userModel.findOne({username: user.username}, async (err, user) => {
             if (err) {
