@@ -1,6 +1,6 @@
 .universalContent {
     width: 72vw;
-    height: 99vh;
+    max-height: 99vh;
     margin: 0 0 0 28vw;
     padding: 0;
 }
