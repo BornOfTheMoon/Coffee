@@ -8,11 +8,13 @@ dotenv.config()
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.post('/', (req, res) => {
     const {token}= req.body;
-    let username = jwt.verify(token, process.env.TOKEN_SECRET);
-    if (username) {
-        userModel.findOne({username: username.username}, async (err, user) => {
+    console.log(token);
+    let user = jwt.verify(token, process.env.TOKEN_SECRET);
+    console.log(user)
+    if (user) {
+        userModel.findOne({username: user.username}, async (err, user) => {
             if (err) {
                 res.status(500).send('Server error!!!!!!!');
             } else if (!user) {
