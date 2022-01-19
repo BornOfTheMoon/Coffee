@@ -8,6 +8,7 @@ const loginUser = require("./api/loginUser.js");
 const productRequests = require("./api/productRequests.js");
 const achievementRequests = require("./api/achievementsRequests.js");
 const orderRequests = require("./api/orderRequests.js");
+const getUserFromToken = require("./api/getUserFromToken.js");
 
 const app = express()
 app.use(cors())
@@ -29,3 +30,4 @@ app.use('/api/login', loginUser);
 app.use('/api/product', productRequests)
 app.use('/api/achievement', achievementRequests)
 app.use('/api/order', orderRequests)
+app.use('/api/verify', getUserFromToken);

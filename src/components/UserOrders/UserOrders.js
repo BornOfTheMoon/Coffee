@@ -1,5 +1,6 @@
 import styles from "./UserOrders.module.css"
 import OrderCard from "../OrderCard/OrderCard";
+import catLogo from "../../images/cat.svg";
 
 const orders = [
     {
@@ -41,6 +42,7 @@ function UserOrders() {
         <div className={styles.userOrders}>
             {orders.map((option)=>
             <OrderCard order={option.products} total={option.total} status={option.status}/>)}
+            <img src={catLogo} alt="cat" className={styles.userOrders__catLogo}/>
         </div>
     )
 }

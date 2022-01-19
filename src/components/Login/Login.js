@@ -1,6 +1,8 @@
 import styles from "./Login.module.css"
-import {NavLink, useNavigate, Navigate} from "react-router-dom";
+import {NavLink, Navigate, useLocation} from "react-router-dom";
 import logo from "../../images/logo.svg";
+import {useEffect, useState} from "react";
+import verifyUser from "../../verifyUser";
 
 
 async function loginUser(data) {
@@ -14,7 +16,13 @@ async function loginUser(data) {
 }
 
 function Login() {
-    const navigate = useNavigate();
+    const location = useLocation();
+    const [auth, setAuth] = useState(false);
+    let path = location.state?.from;
+
+    if (path === null || path === undefined || !path) {
+        path = '/home';
+    }
 
     const handleSubmit = async event => {
         event.preventDefault();
@@ -22,19 +30,25 @@ function Login() {
         username: event.target.elements.name.value,
         password: event.target.elements.password.value
         }
-        const token = await loginUser(data);
-        localStorage.setItem('token', token.token);
-        navigate(token.redirect);
+        let token;
+        token = await loginUser(data).catch(err => token = {token: 'error'});
+        if (token.token !== 'error') localStorage.setItem('token', token.token);
+        else return <Navigate to={'/login'} state={{from: path, auth: false}}/>
     }
+    useEffect(() => {
+        async function getAuth() {
+                const res = await verifyUser(localStorage.getItem('token'));
+                setAuth(res !== null && res !== undefined && res);
+        }
 
-    if (localStorage.getItem('token')) {
-        return <Navigate to={"/home"}/>
-    }
-
-    return (
+        getAuth().then(r => r);
+    })
+    if (auth) {
+        return <Navigate to={path} state={{from: path, auth: true}}/>
+    } else return (
         <div className={styles.login}>
             <NavLink to="/home" className={styles.login__logo}>
-                <img src={logo} className={styles.login__logo} alt={'logo'}/>
+                <img src={logo} className={styles.login__logo} alt="logo"/>
             </NavLink>
             <form className={styles.login__form} onSubmit={handleSubmit}>
                 <input
@@ -44,7 +58,7 @@ function Login() {
                 />
                 <input
                     placeholder="Введите пароль"
-                    type="text"
+                    type="password"
                     id="password"
                 />
                 <button type="submit" className={styles.login__form_button}>
