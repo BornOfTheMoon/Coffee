@@ -14,7 +14,7 @@ function ProductCard({product}) {
                     <p>Цена: {product.price}</p>
                 </div>
                 <button type="submit" className={styles.productCard__content_button}
-                        onClick={async () =>{navigate(`/product:${product.name}`)}}>
+                        onClick={async () =>{navigate(`/product/${product.name}`)}}>
                     Подробнее
                 </button>
             </div>

@@ -12,7 +12,7 @@ function BasketItem({product}) {
                 <p className={styles.basketItem__info_price}>{price}</p>
             </div>
             <button type="submit" className={styles.basketItem__button}
-                    onClick={async () =>{navigate(`/product:${name}`)}}>
+                    onClick={async () =>{navigate(`/product/${name}`)}}>
                 Подробнее
             </button>
         </div>
