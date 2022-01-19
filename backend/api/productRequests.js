@@ -27,6 +27,24 @@ router.get('/:name', (req, res) => {
     })
 })
 
+router.delete("/:name", (req, res) => {
+    productModel.findOne({name: req.params.name}, (err, product) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Error with db, please, try again")
+        } else {
+            product.delete((err) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send("Error while deleting, please, try again")
+                } else {
+                    res.status(200).send(product)
+                }
+            })
+        }
+    })
+})
+
 router.post('/',(req, res) => {
     const {name, description, category, price, positiveRating, negativeRating} = req.body;
 

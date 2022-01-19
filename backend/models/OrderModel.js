@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 
 const OrderSchema = new mongoose.Schema({
-        id: {type: Number, required: true, unique: true, autoIncrement: true, firstValue: 0},
+        id: {type: Number, required: true, unique: true},
     // as I understand it, type 'Date' stores both the date and time
         date: Date,
         price: Number,

@@ -27,6 +27,24 @@ router.get('/:id', (req, res) => {
     })
 })
 
+router.delete("/:id", (req, res) => {
+    orderModel.findOne({id: req.params.id}, (err, order) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Error with db, please, try again")
+        } else {
+            order.delete((err) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send("Error while deleting, please, try again")
+                } else {
+                    res.status(200).send(order)
+                }
+            })
+        }
+    })
+})
+
 router.post('/',async (req, res) => {
     const {price, place, products} = req.body;
     let id = 0
