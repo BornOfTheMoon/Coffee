@@ -8,7 +8,10 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import MenuPage from "./pages/MenuPage/MenuPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 import UserOrdersPage from "./pages/UserOrdersPage/UserOrdersPage";
+import RequireAuth from "./components/RequireAuth/RequireAuth";
+import RequireUnauth from "./components/RequireAuth/RequireUnauth";
 import BasketPage from "./pages/BasketPage/BasketPage";
+
 
 function App() {
     return (
@@ -16,13 +19,22 @@ function App() {
             <div className="app">
                 <Routes>
                     <Route path="/home" element={<HomePage/>}/>
-                    <Route path="/profile" element={<ProfilePage/>}/>
-                    <Route path="/login" element={<LoginPage/>}/>
+                    <Route path="/profile" element={<RequireAuth>
+                        <ProfilePage/>
+                    </RequireAuth>}/>
+                    <Route path="/login" element={<RequireUnauth>
+                        <LoginPage/>
+                    </RequireUnauth>}/>
                     <Route path="/register" element={<RegisterPage/>}/>
                     <Route path="/menu" element={<MenuPage/>}/>
                     <Route path="/product" element={<ProductDetailsPage/>}/>
-                    <Route path="/product/:id" element={<ProductDetailsPage/>}/>
-                    <Route path="/orders" element={<UserOrdersPage/>}/>
+                    <Route path="/product:id" element={<ProductDetailsPage/>}/>
+                    <Route path="/orders" element={<RequireAuth>
+                        <UserOrdersPage/>
+                    </RequireAuth>}/>
+                    <Route path="/" element={<RequireUnauth>
+                        <RegisterPage/>
+                    </RequireUnauth>}/>
                     <Route path="/basket" element={<BasketPage/>}/>
                     <Route path="/" element={<RegisterPage/>}/>
                 </Routes>
