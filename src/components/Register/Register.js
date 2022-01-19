@@ -37,7 +37,7 @@ function Register() {
     return (
         <div className={styles.register}>
             <NavLink to="/home" className={styles.register__logo}>
-                <img src={logo} className={styles.register__logo} alt={'logo'}/>
+                <img src={logo} className={styles.register__logo} alt="logo"/>
             </NavLink>
             <form className={styles.register__form} onSubmit={onSubmit}>
                 <input
@@ -47,16 +47,16 @@ function Register() {
                 />
                 <input
                     placeholder="Введите пароль"
-                    type="text"
+                    type="password"
                     id="password"
                 />
                 <input
                     placeholder="Повторите пароль"
-                    type="text"
-                    id="duplicatePassword"
+                    type="password"
+                    id="duplicate_password"
                 />
                 <button type="submit" className={styles.register__form_button}>
-                    Войти
+                    Зарегестрироваться
                 </button>
             </form>
             <NavLink to="/login" className={styles.register__link}>Уже есть аккаунт? Войти!</NavLink>

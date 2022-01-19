@@ -48,7 +48,7 @@ function Login() {
     } else return (
         <div className={styles.login}>
             <NavLink to="/home" className={styles.login__logo}>
-                <img src={logo} className={styles.login__logo} alt={'logo'}/>
+                <img src={logo} className={styles.login__logo} alt="logo"/>
             </NavLink>
             <form className={styles.login__form} onSubmit={handleSubmit}>
                 <input
@@ -58,7 +58,7 @@ function Login() {
                 />
                 <input
                     placeholder="Введите пароль"
-                    type="text"
+                    type="password"
                     id="password"
                 />
                 <button type="submit" className={styles.login__form_button}>

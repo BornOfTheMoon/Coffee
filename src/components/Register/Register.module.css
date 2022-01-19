@@ -36,8 +36,9 @@
 }
 
 .register__form_button {
-    width: 10vw;
-    border-radius: 10px;
+    width: 12vw;
+    height: 4vh;
+    border-radius: 13px;
     margin-top: 4vh;
     background-color: rgba(236, 234, 234, 0.1);
 }

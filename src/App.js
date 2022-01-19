@@ -10,6 +10,7 @@ import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 import UserOrdersPage from "./pages/UserOrdersPage/UserOrdersPage";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
 import RequireUnauth from "./components/RequireAuth/RequireUnauth";
+import BasketPage from "./pages/BasketPage/BasketPage";
 
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
                     <Route path="/" element={<RequireUnauth>
                         <RegisterPage/>
                     </RequireUnauth>}/>
+                    <Route path="/basket" element={<BasketPage/>}/>
+                    <Route path="/" element={<RegisterPage/>}/>
                 </Routes>
             </div>
         </Router>
