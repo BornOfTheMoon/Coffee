@@ -28,7 +28,7 @@ function App() {
                     <Route path="/register" element={<RegisterPage/>}/>
                     <Route path="/menu" element={<MenuPage/>}/>
                     <Route path="/product" element={<ProductDetailsPage/>}/>
-                    <Route path="/product:id" element={<ProductDetailsPage/>}/>
+                    <Route path="/product/:id" element={<ProductDetailsPage/>}/>
                     <Route path="/orders" element={<RequireAuth>
                         <UserOrdersPage/>
                     </RequireAuth>}/>

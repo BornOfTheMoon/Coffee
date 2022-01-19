@@ -1,17 +1,17 @@
 import styles from "./ProductDetails.module.css"
 
-const product = {
-                    image: "/images/productAvatar.jpg",
-                    name: "first_name",
-                    description: "some text",
-                    price: 150
-                }
+// const product = {
+//                     image: "/images/productAvatar.jpg",
+//                     name: "first_name",
+//                     description: "some text",
+//                     price: 150
+//                 }
 
-function ProductDetails() {
+function ProductDetails({product}) {
     return (
         <div className={styles.productDetails}>
             <div className={styles.productCard__content}>
-                <img src={product.image}/>
+                <img src={product.image} alt="avatar"/>
                 <div className={styles.productCard__content_info}>
                     <p>Название: {product.name}</p>
                     <p>Описание: {product.description}</p>
