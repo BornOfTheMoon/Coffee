@@ -1,48 +1,16 @@
-import verifyUser from "../../verifyUser";
-import {useLocation, Navigate} from "react-router";
-import {useEffect, useRef, useState} from "react";
+import {Navigate} from "react-router";
+import React from "react";
+import {useLocation} from "react-router-dom";
 
-function RequireAuth({ children }) {
-    const state = useLocation().state;
-    const isMountedRef = useRef(null);
-    const controller = new AbortController();
+function RequireAuth({ auth, setAuthorised, path, setPath, children }) {
     const location = useLocation();
-    const [auth, setAuth] = useState(false)
-    let [error, setError] = useState('');
-    async function getAuth() {
-        try {
-            const res = await verifyUser(localStorage.getItem('token'));
-            setAuth(res !== null && res !== undefined && res);
-        } catch (e) {
-            setError(e);
-        }
-    }
-
-    useEffect(() => {
-        if (!state) {
-            isMountedRef.current = true;
-            getAuth().then(r => r);
-            return () => {
-                isMountedRef.current = false;
-                controller.abort();
-            };
-        }
-    }, [])
-
-    if (state) {
-        if (state.auth) {
-            return children;
-        } else {
-            return <Navigate to="/login" state={{from: location.pathname, auth: false}}/>;
-        }
-    }
-
+    path = location.pathname;
+    setPath(path);
     if (!auth) {
-        return <Navigate to="/login" state={{from: location.pathname, auth: false}}/>;
+        return <Navigate to="/login"/>;
     }
 
-
-    return children;
+    return React.cloneElement(children, {auth: auth, setAuthorised: setAuthorised});
 }
 
 export default RequireAuth
