@@ -13,6 +13,7 @@ import RequireUnauth from "./components/RequireAuth/RequireUnauth";
 import Logout from "./components/Logout/Logout";
 import BasketPage from "./pages/BasketPage/BasketPage";
 import verifyUser from "./verifyUser";
+import ProductAddPage from "./pages/ProductAddPage/ProductAddPage";
 
 
 
@@ -44,7 +45,7 @@ function App() {
                 <Routes>
                     <Route path="/home" element={<HomePage/>}/>
                     <Route path="/profile" element={<RequireAuth auth={auth} setAuthorised={setAuth} path={path} setPath={setPath}>
-                       <ProfilePage/>
+                        <ProfilePage/>
                     </RequireAuth>}/>
                     <Route path="/login" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path}>
                         <LoginPage/>
@@ -63,6 +64,7 @@ function App() {
                     <Route path="/logout" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path}>
                         <Logout/>
                     </RequireUnauth>}/>
+                    <Route path="/add" element={<ProductAddPage/>}/>
                 </Routes>
             </div>
         </Router>

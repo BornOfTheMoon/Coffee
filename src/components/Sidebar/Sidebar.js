@@ -16,7 +16,8 @@ const managerData = [{text: "меню", type: "menu"},
                     {text: "корзина", type: "basket"},
                     {text: "личный кабинет", type: "profile"},
                     {text: "мои заказы", type: "orders"},
-                    {text: "сотрудники", type: "employees"}]
+                    {text: "сотрудники", type: "employees"},
+                    {text: "добавить товар", type: "add_product"}]
 
 const user = "user"
 
