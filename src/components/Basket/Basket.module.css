@@ -18,7 +18,7 @@
     font-size: 18px;
 }
 
-.basket__footer > button {
+.basket__footer_button {
     width: 10vw;
     border-radius: 10px;
     background-color: rgba(236, 234, 234, 0.5);

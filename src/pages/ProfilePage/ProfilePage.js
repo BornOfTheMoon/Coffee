@@ -6,25 +6,19 @@ import {useState} from "react";
 import {GetRequest} from "../../api/GetRequest";
 
 
-const defaultUser = {
-    username: "username",
-    name: "name",
-    type: "employee",
-    place: "D1",
-    achievements: [],
-    karma: 3,
-}
+function ProfilePage({user, setUser, defaultUser}) {
+    if (user.type === "none") {
+        const token = localStorage.getItem("token")
+        if (token) {
+            let decoded = jwt_decode(token);
+            let username = decoded.username
 
-function ProfilePage() {
-    const [user, setUser] = useState(defaultUser)
-    const token = localStorage.getItem("token")
-    let decoded = jwt_decode(token);
-    let username = decoded.username
-
-    useState(async () => {
-        await GetRequest(defaultUser, setUser, `http://localhost:8000/api/user/${username}`)
-        console.log(user)
-    })
+            useState(async () => {
+                await GetRequest(defaultUser, setUser, `http://localhost:8000/api/user/${username}`)
+                console.log(user)
+            })
+        }
+    }
 
     return (
         <div className={styles.profilePage}>

@@ -5,25 +5,19 @@ import jwt_decode from "jwt-decode";
 import {GetRequest} from "../../api/GetRequest";
 import {useState} from "react";
 
-const defaultUser = {
-    username: "username",
-    name: "name",
-    type: "employee",
-    place: "D1",
-    achievements: [],
-    karma: 3,
-    orders: []
-}
 
-function UserOrdersPage() {
-    const [user, setUser] = useState(defaultUser)
-    const token = localStorage.getItem("token")
-    const decoded = jwt_decode(token);
-    let username = decoded.username
+function UserOrdersPage({user, setUser, defaultUser}) {
+    if (user.type === "none") {
+        const token = localStorage.getItem("token")
+        if (token) {
+            const decoded = jwt_decode(token);
+            let username = decoded.username
 
-    useState(async () => {
-        await GetRequest(defaultUser, setUser, `http://localhost:8000/api/user/${username}`)
-    })
+            useState(async () => {
+                await GetRequest(defaultUser, setUser, `http://localhost:8000/api/user/${username}`)
+            })
+        }
+    }
 
     const orders = user.orders
 
