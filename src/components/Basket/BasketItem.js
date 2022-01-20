@@ -1,10 +1,28 @@
 import styles from "./BasketItem.module.css"
 import {useNavigate} from "react-router";
+import {useState} from "react";
+import {GetRequest} from "../../api/GetRequest";
 
-function BasketItem({product}) {
+
+const defaultProduct = {
+    name: "name",
+    price: 0
+}
+
+function BasketItem({name}) {
     const navigate = useNavigate();
 
-    const {name, price} = product
+    console.log(name)
+    const [product, setProduct] = useState(defaultProduct)
+
+    useState(async () => {
+        await GetRequest(defaultProduct, setProduct, `http://localhost:8000/api/product/${name}`)
+    })
+
+    console.log(product)
+    const price = product.price
+    console.log(price)
+
     return (
         <div className={styles.basketItem}>
             <div className={styles.basketItem__info}>
