@@ -1,13 +1,23 @@
 import styles from "./ProductDetails.module.css"
 
-// const product = {
-//                     image: "/images/productAvatar.jpg",
-//                     name: "first_name",
-//                     description: "some text",
-//                     price: 150
-//                 }
 
 function ProductDetails({product}) {
+    function toBasket() {
+        let basket = sessionStorage.getItem("basket")
+        let sum = sessionStorage.getItem("sum")
+        if (!basket) {
+            basket = product.name
+        } else {
+            basket += " " + product.name
+        }
+        if (!sum) {
+            sum = product.price
+        } else {
+            sum = +product.price + +sum
+        }
+        sessionStorage.setItem("basket", basket)
+        sessionStorage.setItem("sum", sum)
+    }
     return (
         <div className={styles.productDetails}>
             <div className={styles.productCard__content}>
@@ -21,7 +31,8 @@ function ProductDetails({product}) {
 
             //TO DO добавить как-то уточнение данных товара (размер, сироп и т.д)
 
-            <button type="submit" className={styles.productCard__button}>
+            <button type="submit" className={styles.productCard__button}
+                    onClick={toBasket}>
                 В корзину
             </button>
         </div>

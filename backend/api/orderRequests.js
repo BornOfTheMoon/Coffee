@@ -56,8 +56,12 @@ router.post('/',async (req, res) => {
         } else {
             if (orders.length !== 0) {
                 id = orders[orders.length - 1].id + 1
+                console.log(orders)
+                console.log(id)
             }
+            console.log(id)
             let order = new orderModel({id: id, date: date, price: price, place: place, products: products});
+            console.log(order)
             order.save((err) => {
                 if (err) {
                     console.log(err);

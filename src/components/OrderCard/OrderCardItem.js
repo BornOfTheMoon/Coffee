@@ -1,10 +1,28 @@
 import styles from "./OrderCardItem.module.css"
+import {useState} from "react";
+import {GetRequest} from "../../api/GetRequest";
 
-function OrderCardItem({name, price}) {
+const defaultProduct = {
+    name: "name",
+    price: 0
+}
+
+function OrderCardItem({name}) {
+    console.log(name)
+    const [product, setProduct] = useState(defaultProduct)
+
+    useState(async () => {
+        await GetRequest(defaultProduct, setProduct, `http://localhost:8000/api/product/${name}`)
+    })
+
+    console.log(product)
+    const price = product.price
+    console.log(price)
+
     return (
         <div className={styles.orderCardItem}>
-            <p className={styles.orderCardItem__title}>{name}</p>
-            <p>{price}</p>
+            <p className={styles.orderCardItem__title}>{product.name}</p>
+            <p>{product.price}</p>
         </div>
     )
 }
