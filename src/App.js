@@ -10,6 +10,7 @@ import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 import UserOrdersPage from "./pages/UserOrdersPage/UserOrdersPage";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
 import RequireUnauth from "./components/RequireAuth/RequireUnauth";
+import Logout from "./components/Logout/Logout";
 import BasketPage from "./pages/BasketPage/BasketPage";
 import verifyUser from "./verifyUser";
 
@@ -59,7 +60,9 @@ function App() {
                         <RegisterPage/>
                     </RequireUnauth>}/>
                     <Route path="/basket" element={<BasketPage/>}/>
-                    {/*<Route path="/" element={<RegisterPage/>}/>*/}
+                    <Route path="/" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path}>
+                        <Logout/>
+                    </RequireUnauth>}/>
                 </Routes>
             </div>
         </Router>
