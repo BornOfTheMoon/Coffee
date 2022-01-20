@@ -11,11 +11,9 @@ function AchievementsItem({name}) {
     const [achievement, setAchievement] = useState(defaultAchievement)
     const API_URL = `http://localhost:8000/api/achievement/${name}`
 
-    if (name) {
-        useState(async () => {
-            await GetRequest(defaultAchievement, setAchievement, API_URL)
-        })
-    }
+    useState(async () => {
+        if (name) await GetRequest(defaultAchievement, setAchievement, API_URL);
+    })
 
     return (
         <div className={styles.achievementsItem}>

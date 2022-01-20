@@ -45,15 +45,15 @@ async function toOrders() {
 function BasketPage() {
     const [user, setUser] = useState(defaultUser)
     const token = localStorage.getItem("token")
-    if (token) {
-        let decoded = jwt_decode(token);
-        let username = decoded.username
-
-        useState(async () => {
+    useState(async () => {
+        if (token) {
+            let decoded = jwt_decode(token);
+            let username = decoded.username;
             await GetRequest(defaultUser, setUser, `http://localhost:8000/api/user/${username}`)
             console.log(user)
-        })
-    }
+        }
+    })
+
     return (
         <div className={styles.basketPage}>
             <Sidebar item="basket"/>
