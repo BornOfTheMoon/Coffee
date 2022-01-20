@@ -3,14 +3,14 @@ import {NavLink} from "react-router-dom";
 import logo from "../../images/logo.svg";
 
 
-function onSubmit(event) {
+async function onSubmit(event) {
     event.preventDefault();
     const data = {
         username: event.target.elements.name.value,
         password: event.target.elements.password.value,
         passwordAgain: event.target.elements.duplicatePassword.value
     }
-    fetch('http://localhost:8000/api/register', {
+    const token = await fetch('http://localhost:8000/api/register', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -19,9 +19,7 @@ function onSubmit(event) {
     })
         .then(res => {
             if (res.status === 200) {
-                res.json().then((res) => {
-                    console.log(res);
-                })
+                res.json()
             } else {
                 console.log(res);
             }
@@ -30,6 +28,7 @@ function onSubmit(event) {
             console.error(err);
             alert(err)
         });
+    localStorage.setItem('token', token.token);
 }
 
 

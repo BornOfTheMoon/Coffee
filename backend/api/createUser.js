@@ -1,6 +1,11 @@
 const express = require("express");
 const userModel = require("../models/UserModel.js");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+
+
+dotenv.config()
 
 const router = express.Router();
 
@@ -21,6 +26,11 @@ router.post('/', async (req, res) => {
             console.log(err);
             res.status(500).send("Error while registering, please, try again")
         } else {
+            const secret = process.env.TOKEN_SECRET;
+            const payload = { username };
+            const token = jwt.sign(payload, secret, {'expiresIn': '12h'});
+            res.cookie('jwt', token, {'httpOnly': false}).status(200)
+                .json({'token': token})
             res.status(200).send("Welcome on board!")
         }
     });
