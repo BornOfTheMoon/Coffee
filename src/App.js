@@ -60,7 +60,7 @@ function App() {
                         <RegisterPage/>
                     </RequireUnauth>}/>
                     <Route path="/basket" element={<BasketPage/>}/>
-                    <Route path="/" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path}>
+                    <Route path="/logout" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path}>
                         <Logout/>
                     </RequireUnauth>}/>
                 </Routes>

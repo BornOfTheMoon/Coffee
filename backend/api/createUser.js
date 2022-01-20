@@ -30,8 +30,7 @@ router.post('/', async (req, res) => {
             const payload = { username };
             const token = jwt.sign(payload, secret, {'expiresIn': '12h'});
             res.cookie('jwt', token, {'httpOnly': false}).status(200)
-                .json({'token': token})
-            res.status(200).send("Welcome on board!")
+                .json({'token': token});
         }
     });
 });
