@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 
 const ProductSchema = new mongoose.Schema({
         name: {type: String, required: true, unique: true},
+        image: {type: String, default: "/images/productAvatar.jpg"},
         description: String,
         category: String,
         price: Number,

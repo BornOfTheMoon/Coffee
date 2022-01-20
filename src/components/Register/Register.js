@@ -53,7 +53,7 @@ function Register() {
                 <input
                     placeholder="Повторите пароль"
                     type="password"
-                    id="duplicate_password"
+                    id="duplicatePassword"
                 />
                 <button type="submit" className={styles.register__form_button}>
                     Зарегестрироваться

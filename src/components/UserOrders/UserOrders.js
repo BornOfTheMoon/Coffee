@@ -2,46 +2,11 @@ import styles from "./UserOrders.module.css"
 import OrderCard from "../OrderCard/OrderCard";
 import catLogo from "../../images/cat.svg";
 
-const orders = [
-    {
-        products: [
-            {
-                name: "first_name",
-                price: 150
-            },
-            {
-                name: "second_name",
-                price: 250
-            },
-            {
-                name: "first_name",
-                price: 100
-            },
-        ],
-        total: 500,
-        status: "В работе"
-    },
-    {
-        products: [
-            {
-                name: "first_name",
-                price: 150
-            },
-            {
-                name: "third_name",
-                price: 100
-            },
-        ],
-        total: 250,
-        status: "Готов"
-    }
-]
 
-function UserOrders() {
+function UserOrders({orders}) {
     return (
         <div className={styles.userOrders}>
-            {orders.map((option)=>
-            <OrderCard order={option.products} total={option.total} status={option.status}/>)}
+            {orders.map((option) => <OrderCard id={option}/>)}
             <img src={catLogo} alt="cat" className={styles.userOrders__catLogo}/>
         </div>
     )
