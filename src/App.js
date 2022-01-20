@@ -12,18 +12,8 @@ import RequireAuth from "./components/RequireAuth/RequireAuth";
 import RequireUnauth from "./components/RequireAuth/RequireUnauth";
 import BasketPage from "./pages/BasketPage/BasketPage";
 import verifyUser from "./verifyUser";
-import jwt_decode from "jwt-decode";
-import {GetRequest} from "./api/GetRequest";
 
 
-const defaultUser = {
-    username: "username",
-    name: "name",
-    type: "none",
-    place: "D1",
-    achievements: [],
-    karma: 3,
-}
 
 function App() {
     const [auth, setAuth] = useState(false);
@@ -46,26 +36,14 @@ function App() {
         return () => cleanupFunc = true;
     }, [])
 
-    const [user, setUser] = useState(defaultUser)
-    const token = localStorage.getItem("token")
-    if (token) {
-        let decoded = jwt_decode(token);
-        let username = decoded.username
 
-        useState(async () => {
-            await GetRequest(defaultUser, setUser, `http://localhost:8000/api/user/${username}`)
-            console.log(user)
-        })
-    }
     return (
         <Router>
             <div className="app">
                 <Routes>
                     <Route path="/home" element={<HomePage/>}/>
                     <Route path="/profile" element={<RequireAuth auth={auth} setAuthorised={setAuth} path={path} setPath={setPath}>
-                        <ProfilePage/>
-                    <Route path="/profile" element={<RequireAuth>
-                        <ProfilePage user={user} setUser={setUser} defaultUser={defaultUser}/>
+                       <ProfilePage/>
                     </RequireAuth>}/>
                     <Route path="/login" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path}>
                         <LoginPage/>
@@ -76,14 +54,11 @@ function App() {
                     <Route path="/product/:id" element={<ProductDetailsPage/>}/>
                     <Route path="/orders" element={<RequireAuth auth={auth} setAuthorised={setAuth} path={path} setPath={setPath}>
                         <UserOrdersPage/>
-                    <Route path="/orders" element={<RequireAuth>
-                        <UserOrdersPage user={user} setUser={setUser} defaultUser={defaultUser}/>
                     </RequireAuth>}/>
                     <Route path="/" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path}>
                         <RegisterPage/>
                     </RequireUnauth>}/>
-                    <Route path="/basket" element={<BasketPage user={user} setUser={setUser}
-                                                               defaultUser={defaultUser}/>}/>
+                    <Route path="/basket" element={<BasketPage/>}/>
                     {/*<Route path="/" element={<RegisterPage/>}/>*/}
                 </Routes>
             </div>
