@@ -1,14 +1,34 @@
 import styles from "./OrderCard.module.css"
 import OrderCardItem from "./OrderCardItem";
+import {useState} from "react";
+import {GetRequest} from "../../api/GetRequest";
 
-function OrderCard({order, total, status}) {
+
+const defaultOrder = {
+        products: [],
+        total: 0,
+        status: "В работе"
+    }
+
+function OrderCard({id}) {
+    console.log(id)
+    const [order, setOrder] = useState(defaultOrder)
+    const API_URL = `http://localhost:8000/api/order/${id}`
+
+    useState(async () => {
+        await GetRequest(defaultOrder, setOrder, API_URL)
+
+    })
+
+    const products = order.products
+
     return (
         <div className={styles.orderCard}>
-            <p className={styles.orderCard__status}>Статус: {status}</p>
+            <p className={styles.orderCard__status}>Статус: {order.status}</p>
             <div className={styles.orderCard__content}>
-                {order.map((option)=> <OrderCardItem name={option.name} price={option.price}/>)}
+                {products.map((option)=> <OrderCardItem name={option}/>)}
             </div>
-            <p className={styles.orderCard__total}>Сумма заказа: {total}</p>
+            <p className={styles.orderCard__total}>Сумма заказа: {order.price}</p>
         </div>
     )
 }
