@@ -67,9 +67,8 @@ function ProductDetails({product}) {
                 </div>
             </div>
 
-            //TO DO добавить как-то уточнение данных товара (размер, сироп и т.д)
-
-            <button type="submit" className={styles.productCard__button}
+            <div className={styles.buttons}>
+                <button type="submit" className={styles.productCard__button}
                     onClick={toBasket}>
                 В корзину
             </button>
@@ -77,6 +76,7 @@ function ProductDetails({product}) {
                     onClick={fromBasket}>
                 Из корзины
             </button>
+            </div>
         </div>
     )
 }
