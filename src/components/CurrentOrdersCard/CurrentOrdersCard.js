@@ -51,7 +51,7 @@ function CurrentOrdersCard({order}) {
             order.status  = "received"
         }
         await addOrder(order)
-        location.reload()
+        // location.reload()
     }
 
     return (

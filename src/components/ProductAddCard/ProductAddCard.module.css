@@ -44,7 +44,7 @@
 .productAdd__form {
     display: flex;
     flex-direction: column;
-    height: 17vh;
+    height: 23vh;
     justify-content: space-between;
     align-items: center;
 }
@@ -54,4 +54,11 @@
     height: 2.5vh;
     border-radius: 10px;
     border-style: outset;
+}
+
+.menu__catLogo {
+    width: 5vw;
+    position: fixed;
+    right: 2vw;
+    bottom: 3vh;
 }

@@ -42,14 +42,14 @@ function RegisterPage({auth, setAuthorised, setUser, sendNotification}) {
                 </NavLink>
                 <form className={styles.register__form} onSubmit={onSubmit}>
                     <input
-                        placeholder="Введите логин"
-                        type="text"
-                        id="username"
-                    />
-                    <input
                         placeholder="Введите имя"
                         type="text"
                         id="name"
+                    />
+                    <input
+                        placeholder="Введите логин"
+                        type="text"
+                        id="username"
                     />
                     <input
                         placeholder="Введите пароль"

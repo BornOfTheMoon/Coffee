@@ -1,5 +1,6 @@
 import styles from "./ProductDetails.module.css"
 import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard";
+import catLogo from "../../images/cat.svg";
 
 
 function ProductDetails({product}) {
@@ -69,6 +70,7 @@ function ProductDetails({product}) {
                         onClick={fromBasket}>
                     Из корзины
                 </button>
+                <img src={catLogo} alt="cat" className={styles.menu__catLogo}/>
             </div>
         </div>
     )
