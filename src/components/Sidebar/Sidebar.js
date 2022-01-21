@@ -20,17 +20,20 @@ const managerData = [{text: "меню", type: "menu"},
                     {text: "сотрудники", type: "employees"},
                     {text: "добавить товар", type: "add_product"}]
 
-const user = "employee"
+// const user = "employee"
 
-function Sidebar({item}) {
+function Sidebar({item, user}) {
+    console.log(user)
     let options = []
-    if (user === "manager") {
+    const type = user.type
+    if (type === "manager") {
         options = managerData
-    } else if (user === "employee") {
+    } else if (type === "employee") {
         options = employeeData
-    } else if (user === "user") {
+    } else if (type === "user") {
         options = userData
     }
+    console.log(type)
     return (
         <div className={styles.sidebar}>
             <NavLink to="/home" className={styles.sidebar__logo}>

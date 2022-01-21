@@ -26,7 +26,7 @@ const defaultProducts = [
     }
 ]
 
-function MenuPage() {
+function MenuPage({user}) {
     const [products, setProducts] = useState(defaultProducts)
     const [filterProducts, setFilterProducts] = useState(defaultProducts)
     const API_URL = 'http://localhost:8000/api/product/'
@@ -40,7 +40,7 @@ function MenuPage() {
 
     return (
         <div className={styles.menuPage}>
-            <Sidebar item="menu"/>
+            <Sidebar item="menu" user={user}/>
             <div className={styles.menuPage__content}>
                 <MenuTabBar products={products} setProducts={setFilterProducts}/>
                 <Menu products={filterProducts}/>

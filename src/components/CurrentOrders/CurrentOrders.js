@@ -15,6 +15,10 @@ function CurrentOrders({orders}) {
         }
     })
 
+    if (wait.length) wait.reverse()
+    if (accepted.length) accepted.reverse()
+    if (finished.length) finished.reverse()
+
     return (
         <div className={styles.currentOrders}>
             <p>Ждут подтверждения</p>

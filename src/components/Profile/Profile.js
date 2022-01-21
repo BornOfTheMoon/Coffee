@@ -5,6 +5,7 @@ import catLogo from "../../images/cat.svg"
 
 
 function Profile({user}) {
+    console.log(user)
     return (
         <div className={styles.profile}>
             <UserCard user={user}/>
