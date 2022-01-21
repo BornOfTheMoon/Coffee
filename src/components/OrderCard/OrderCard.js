@@ -11,7 +11,6 @@ const defaultOrder = {
     }
 
 function OrderCard({id}) {
-    console.log(id)
     const [order, setOrder] = useState(defaultOrder)
     const API_URL = `http://localhost:8000/api/order/${id}`
 

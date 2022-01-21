@@ -60,12 +60,16 @@ router.get("/user/:name", (req, res) => {
 router.post('/',async (req, res) => {
     const {price, place, products, user, status} = req.body;
     let id = req.body.id
+    let date = req.body.date
     let flag = true
     if (!id) {
         id = 0
         flag = false
     }
-    const date = Date()
+
+    if (!date) {
+        date = Date()
+    }
 
     orderModel.find({}, (err, orders) => {
         if (err) {

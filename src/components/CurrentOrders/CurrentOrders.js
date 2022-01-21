@@ -19,7 +19,7 @@ function CurrentOrders({orders}) {
         <div className={styles.currentOrders}>
             <p>Ждут подтверждения</p>
             <div className={styles.currentOrders__items}>
-                {wait.map((order) => <CurrentOrdersCard order={order} status={"wait confirm"}/>)}
+                {wait.map((order) => <CurrentOrdersCard order={order}/>)}
             </div>
             <p>В работе</p>
             <div className={styles.currentOrders__items}>
