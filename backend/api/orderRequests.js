@@ -27,8 +27,8 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.delete("/:id", (req, res) => {
-    orderModel.findOne({id: req.params.id}, (err, order) => {
+router.delete("/", (req, res) => {
+    orderModel.findOne({id: req.body.id}, (err, order) => {
         if (err) {
             console.log(err);
             res.status(500).send("Error with db, please, try again")
@@ -58,21 +58,27 @@ router.get("/user/:name", (req, res) => {
 })
 
 router.post('/',async (req, res) => {
-    const {price, place, products, user} = req.body;
-    let id = 0
+    const {price, place, products, user, status} = req.body;
+    let id = req.body.id
+    let flag = true
+    if (!id) {
+        id = 0
+        flag = false
+    }
     const date = Date()
 
     orderModel.find({}, (err, orders) => {
         if (err) {
             res.status(500).send('Problems with db')
         } else {
-            if (orders.length !== 0) {
-                id = orders[orders.length - 1].id + 1
+            if (orders.length !== 0 && !flag) {
+                id = orders.length + 1
                 console.log(orders)
                 console.log(id)
             }
             console.log(id)
-            let order = new orderModel({id: id, date: date, price: price, place: place, products: products, user: user});
+            let order = new orderModel({id: id, date: date, price: price, place: place,
+                products: products, user: user, status: status});
             console.log(order)
             order.save((err) => {
                 if (err) {

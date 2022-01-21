@@ -1,6 +1,28 @@
 import styles from "./ProductAddCard.module.css"
 
+function addProduct(data) {
+    console.log(data)
+    return  fetch( "http://localhost:8000/api/product", {
+        method: "Post",
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.json())
+}
+
 function ProductAddCard() {
+    async function onClick(event) {
+        event.preventDefault();
+        const data = {
+            name: event.target.elements.name.value,
+            description: event.target.elements.description.value,
+            category: event.target.elements.category.value,
+            price: event.target.elements.cost.value
+        }
+        await addProduct(data)
+    }
+
     return (
         <div className={styles.productAdd}>
             <div className={styles.file}>
@@ -8,7 +30,7 @@ function ProductAddCard() {
                 <input type="file"/>
             </div>
             <div className={styles.productAdd__content}>
-                <form className={styles.productAdd__form}>
+                <form className={styles.productAdd__form} onSubmit={onClick}>
                     <input
                         placeholder="Название"
                         type="text"
@@ -18,6 +40,11 @@ function ProductAddCard() {
                         placeholder="Описание"
                         type="textarea"
                         id="description"
+                    />
+                    <input
+                        placeholder="Категория"
+                        type="text"
+                        id="category"
                     />
                     <input
                         placeholder="Стоимость"

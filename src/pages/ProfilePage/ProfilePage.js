@@ -4,7 +4,7 @@ import Profile from "../../components/Profile/Profile";
 import jwt_decode from 'jwt-decode';
 import {useState} from "react";
 import {GetRequest} from "../../api/GetRequest";
-import Logout from "../../components/Logout/Logout";
+import {Navigate} from "react-router";
 
 
 const defaultUser = {
@@ -28,13 +28,18 @@ function ProfilePage({setAuth}) {
         }
     })
 
+    function Logout() {
+        setAuth(false);
+        localStorage.removeItem('token');
+        return <Navigate to={"/home"}/>
+    }
+
 
     return (
         <div className={styles.profilePage}>
             <Sidebar item="profile"/>
             <Profile user={user}/>
-            <p onClick={()=> {
-                console.log("click")}}>Log Out</p>
+            <p onClick={Logout}>Log Out</p>
         </div>
     )
 }
