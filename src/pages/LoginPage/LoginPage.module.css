@@ -19,7 +19,7 @@
 .login__form {
     display: flex;
     flex-direction: column;
-    height: 20vh;
+    height: 18vh;
     justify-content: space-between;
     align-items: center;
 }
@@ -45,4 +45,5 @@
 .login__link {
     color: black;
     font-size: 14px;
+    text-align: center;
 }

@@ -18,3 +18,10 @@
     justify-content: space-around;
     margin-left: 12vw;
 }
+
+.menu__catLogo {
+    width: 5vw;
+    position: fixed;
+    right: 2vw;
+    bottom: 3vh;
+}

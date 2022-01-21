@@ -1,7 +1,7 @@
 .profilePage > p {
     position: fixed;
     margin: 0;
-    right: 2vw;
-    bottom: 1vh;
+    right: 2.2vw;
+    bottom: 0.5vh;
     cursor: pointer;
 }

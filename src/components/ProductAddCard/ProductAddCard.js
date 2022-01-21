@@ -1,4 +1,5 @@
 import styles from "./ProductAddCard.module.css"
+import catLogo from "../../images/cat.svg";
 
 function addProduct(data) {
     console.log(data)
@@ -54,6 +55,8 @@ function ProductAddCard() {
                     <button type="submit" className={styles.productAdd__content_button}>
                         Добавить товар
                     </button>
+
+                    <img src={catLogo} alt="cat" className={styles.menu__catLogo}/>
                 </form>
             </div>
         </div>

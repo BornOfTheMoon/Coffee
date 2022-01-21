@@ -11,10 +11,6 @@ const MenuTabBar = ({products, setProducts}) => {
             onclick: () => setProducts(products),
         },
         {
-            name: "Food",
-            onclick: () => setProducts(products.filter((value) => value.category === "food")),
-        },
-        {
             name: "Coffee",
             onclick: () => setProducts(products.filter((value) => value.category === "coffee")),
         },
@@ -23,8 +19,20 @@ const MenuTabBar = ({products, setProducts}) => {
             onclick: () => setProducts(products.filter((value) => value.category === "tea")),
         },
         {
+            name: "Food",
+            onclick: () => setProducts(products.filter((value) => value.category === "food")),
+        },
+        {
+            name: "Deserts",
+            onclick: () => setProducts(products.filter((value) => value.category === "deserts")),
+        },
+        {
             name: "Syrup",
             onclick: () => setProducts(products.filter((value) => value.category === "syrup")),
+        },
+        {
+            name: "Other",
+            onclick: () => setProducts(products.filter((value) => value.category === "other")),
         },
     ];
     const [activeTab, setActiveTab] = useState(0);
