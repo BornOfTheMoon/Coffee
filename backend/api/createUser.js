@@ -10,7 +10,7 @@ dotenv.config()
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-    const {username, password, passwordAgain} = req.body;
+    const {username, name, password, passwordAgain} = req.body;
 
     if (password !== passwordAgain) {
         res.status(400).send("Passwords are not equal")
@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
     const salt = await bcrypt.genSalt(saltRounds)
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    let user = new userModel({username, hashedPassword});
+    let user = new userModel({username, name, hashedPassword});
     user.save((err) => {
         if (err) {
             console.log(err);

@@ -1,6 +1,5 @@
 import styles from "./RegisterPage.module.css"
 import UniversalContent from "../../components/UniversalContent/UniversalContent";
-import Register from "../../components/Register/Register";
 import {NavLink} from "react-router-dom";
 import logo from "../../images/logo.svg";
 
@@ -19,7 +18,8 @@ function RegisterPage({auth, setAuthorised, setUser}) {
     const onSubmit = async event => {
         event.preventDefault();
         const data = {
-            username: event.target.elements.name.value,
+            username: event.target.elements.username.value,
+            name: event.target.elements.name.value,
             password: event.target.elements.password.value,
             passwordAgain: event.target.elements.duplicatePassword.value
         }
@@ -42,6 +42,11 @@ function RegisterPage({auth, setAuthorised, setUser}) {
                 <form className={styles.register__form} onSubmit={onSubmit}>
                     <input
                         placeholder="Введите логин"
+                        type="text"
+                        id="username"
+                    />
+                    <input
+                        placeholder="Введите имя"
                         type="text"
                         id="name"
                     />

@@ -5,11 +5,11 @@ const UserSchema = new mongoose.Schema({
     username: {type: String, required: true, unique: true},
     name: {type: String},
     hashedPassword: {type: String, required: true},
-    type: String,
-    achievements: Array,
-    orders: Array,
+    type: {type: String, default: "user"},
+    achievements: {type: Array, default: ["Гость"]},
+    orders: {type: Array, default: []},
     workspace: String,
-    karma: Number,
+    karma: {type: Number, default: 1},
     avatar: String,
     }
 )

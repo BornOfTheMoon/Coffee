@@ -58,7 +58,7 @@ router.get("/user/:name", (req, res) => {
 })
 
 router.post('/',async (req, res) => {
-    const {price, place, products, user, status} = req.body;
+    const {price, place, products, user, status, note} = req.body;
     let id = req.body.id
     let date = req.body.date
     let flag = true
@@ -82,7 +82,7 @@ router.post('/',async (req, res) => {
             }
             console.log(id)
             let order = new orderModel({id: id, date: date, price: price, place: place,
-                products: products, user: user, status: status});
+                products: products, user: user, status: status, note: note});
             console.log(order)
             order.save((err) => {
                 if (err) {
