@@ -11,7 +11,8 @@ const employeeData = [{text: "меню", type: "menu"},
                     {text: "корзина", type: "basket"},
                     {text: "личный кабинет", type: "profile"},
                     {text: "мои заказы", type: "orders"},
-                    {text: "текущие заказы", type: "cur_orders"}]
+                    {text: "текущие заказы", type: "current"},
+                    {text: "добавить товар", type: "add"}]
 const managerData = [{text: "меню", type: "menu"},
                     {text: "корзина", type: "basket"},
                     {text: "личный кабинет", type: "profile"},
@@ -19,7 +20,7 @@ const managerData = [{text: "меню", type: "menu"},
                     {text: "сотрудники", type: "employees"},
                     {text: "добавить товар", type: "add_product"}]
 
-const user = "user"
+const user = "employee"
 
 function Sidebar({item}) {
     let options = []
@@ -33,7 +34,7 @@ function Sidebar({item}) {
     return (
         <div className={styles.sidebar}>
             <NavLink to="/home" className={styles.sidebar__logo}>
-                <img src={logo} className={styles.sidebar__logo}/>
+                <img src={logo} className={styles.sidebar__logo} alt={"logo"}/>
             </NavLink>
              <div className={styles.sidebar__content}>
                 {options.map((option)=> <SidebarItem text={option.text}

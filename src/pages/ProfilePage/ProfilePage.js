@@ -4,6 +4,7 @@ import Profile from "../../components/Profile/Profile";
 import jwt_decode from 'jwt-decode';
 import {useState} from "react";
 import {GetRequest} from "../../api/GetRequest";
+import Logout from "../../components/Logout/Logout";
 
 
 const defaultUser = {
@@ -15,7 +16,7 @@ const defaultUser = {
     karma: 3,
 }
 
-function ProfilePage() {
+function ProfilePage({setAuth}) {
     const [user, setUser] = useState(defaultUser)
     const token = localStorage.getItem("token")
     useState(async () => {
@@ -32,6 +33,8 @@ function ProfilePage() {
         <div className={styles.profilePage}>
             <Sidebar item="profile"/>
             <Profile user={user}/>
+            <p onClick={()=> {
+                console.log("click")}}>Log Out</p>
         </div>
     )
 }

@@ -4,7 +4,7 @@ function ProductAddCard() {
     return (
         <div className={styles.productAdd}>
             <div className={styles.file}>
-                <img src="https://pcavto.com/image/cache/catalog/farcar/rl_screenshots/RL_FarCar_screenshots_06-1024x768.jpg" alt={file}/>
+                <img src="https://pcavto.com/image/cache/catalog/farcar/rl_screenshots/RL_FarCar_screenshots_06-1024x768.jpg" alt={"file"}/>
                 <input type="file"/>
             </div>
             <div className={styles.productAdd__content}>

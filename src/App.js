@@ -13,7 +13,9 @@ import RequireUnauth from "./components/RequireAuth/RequireUnauth";
 import Logout from "./components/Logout/Logout";
 import BasketPage from "./pages/BasketPage/BasketPage";
 import verifyUser from "./verifyUser";
-import ProductAddPage from "./pages/ProductAddPage/ProductAddPage";
+import ProductAddPage from "./pages/ProductAddPage/ProductAddPage.js";
+
+import CurrentOrdersPage from "./pages/CurrentOrdersPage/CurrentOrdersPage";
 
 
 const defaultUser = {
@@ -53,7 +55,7 @@ function App() {
                 <Routes>
                     <Route path="/home" element={<HomePage/>}/>
                     <Route path="/profile" element={<RequireAuth auth={auth} setAuthorised={setAuth} path={path} setPath={setPath}>
-                        <ProfilePage/>
+                        <ProfilePage setAuth={setAuth}/>
                     </RequireAuth>}/>
                     <Route path="/login" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path}>
                         <LoginPage/>
@@ -73,6 +75,7 @@ function App() {
                         <Logout/>
                     </RequireUnauth>}/>
                     <Route path="/add" element={<ProductAddPage/>}/>
+                    <Route path="/current" element={<CurrentOrdersPage/>}/>
                 </Routes>
             </div>
         </Router>

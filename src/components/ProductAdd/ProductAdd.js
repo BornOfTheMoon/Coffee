@@ -1,5 +1,5 @@
 import styles from "./ProductAdd.module.css"
-import ProductAddCard from "../ProductAddCard/ProductAddCard";
+import ProductAddCard from "../ProductAddCard/ProductAddCard.js";
 
 function ProductAdd() {
     return (

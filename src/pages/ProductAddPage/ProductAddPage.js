@@ -6,7 +6,7 @@ import ProductAdd from "../../components/ProductAdd/ProductAdd";
 function ProductAddPage() {
     return (
         <div className={styles.productAdd}>
-            <Sidebar item="add_product"/>
+            <Sidebar item="add"/>
             <div className={styles.productAdd__content}>
                 <ProductAdd/>
             </div>
