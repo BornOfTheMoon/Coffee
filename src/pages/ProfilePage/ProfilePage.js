@@ -7,29 +7,9 @@ import {GetRequest} from "../../api/GetRequest";
 import {Navigate} from "react-router";
 
 
-const defaultUser = {
-    username: "username",
-    name: "name",
-    type: "none",
-    place: "D1",
-    achievements: [],
-    karma: 3,
-}
-
-function ProfilePage({setAuth}) {
-    const [user, setUser] = useState(defaultUser)
-    const token = localStorage.getItem("token")
-    useState(async () => {
-        if (token) {
-            let decoded = jwt_decode(token);
-            let username = decoded.username;
-            await GetRequest(defaultUser, setUser, `http://localhost:8000/api/user/${username}`)
-            console.log(user)
-        }
-    })
-
+function ProfilePage({user}) {
     function Logout() {
-        setAuth(false);
+        // setAuth(false);
         localStorage.removeItem('token');
         return <Navigate to={"/home"}/>
     }

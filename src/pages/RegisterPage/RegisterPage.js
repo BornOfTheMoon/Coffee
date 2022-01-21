@@ -14,7 +14,7 @@ async function saveUser(data) {
     }).then(res => res.json());
 }
 
-function RegisterPage({auth, setAuthorised}) {
+function RegisterPage({auth, setAuthorised, setUser}) {
 
     const onSubmit = async event => {
         event.preventDefault();
@@ -23,13 +23,13 @@ function RegisterPage({auth, setAuthorised}) {
             password: event.target.elements.password.value,
             passwordAgain: event.target.elements.duplicatePassword.value
         }
-        let token;
-        token = await saveUser(data).catch(err => token = {token: 'error'});
-        console.log(token);
-        if (token.token !== 'error') {
+        let userData;
+        userData = await saveUser(data).catch(err => userData = {token: 'error'});
+        if (userData.token !== 'error') {
             auth = true;
             setAuthorised(auth);
-            localStorage.setItem('token', token.token);
+            setUser(userData.user);
+            localStorage.setItem('token', userData.token);
         }
     }
 

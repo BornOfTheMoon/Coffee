@@ -29,7 +29,8 @@ const defaultUser = {
 
 function App() {
     const [auth, setAuth] = useState(false);
-    const [path, setPath] = useState('/home')
+    const [path, setPath] = useState('/home');
+    const [user, setUser] = useState(defaultUser);
     const [error, setError] = useState('');
 
     useEffect(() => {
@@ -39,6 +40,7 @@ function App() {
             try {
                 const res = await verifyUser(localStorage.getItem('token'));
                 if (!cleanupFunc) setAuth(res !== null && res !== undefined && res);
+                if (auth) setUser(res);
             } catch (e) {
                 setError(e);
             }
@@ -54,20 +56,20 @@ function App() {
             <div className="app">
                 <Routes>
                     <Route path="/home" element={<HomePage/>}/>
-                    <Route path="/profile" element={<RequireAuth auth={auth} setAuthorised={setAuth} path={path} setPath={setPath}>
+                    <Route path="/profile" element={<RequireAuth auth={auth} setAuthorised={setAuth} path={path} setPath={setPath} user={user}>
                         <ProfilePage setAuth={setAuth}/>
                     </RequireAuth>}/>
-                    <Route path="/login" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path}>
+                    <Route path="/login" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path} setUser={setUser}>
                         <LoginPage/>
                     </RequireUnauth>}/>
                     <Route path="/register" element={<RegisterPage/>}/>
                     <Route path="/menu" element={<MenuPage/>}/>
                     <Route path="/product" element={<ProductDetailsPage/>}/>
                     <Route path="/product/:id" element={<ProductDetailsPage/>}/>
-                    <Route path="/orders" element={<RequireAuth auth={auth} setAuthorised={setAuth} path={path} setPath={setPath}>
+                    <Route path="/orders" element={<RequireAuth auth={auth} setAuthorised={setAuth} path={path} setPath={setPath} user={user}>
                         <UserOrdersPage/>
                     </RequireAuth>}/>
-                    <Route path="/" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path}>
+                    <Route path="/" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path} setUser={setUser}>
                         <RegisterPage/>
                     </RequireUnauth>}/>
                     <Route path="/basket" element={<BasketPage/>}/>

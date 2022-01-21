@@ -13,19 +13,20 @@ async function loginUser(data) {
     }).then(res => res.json())
 }
 
-function LoginPage({auth, setAuthorised, path, setPath}) {
+function LoginPage({auth, setAuthorised, setUser}) {
     const handleSubmit = async event => {
         event.preventDefault();
         const data = {
             username: event.target.elements.name.value,
             password: event.target.elements.password.value
         }
-        let token;
-        token = await loginUser(data).catch(err => token = {token: 'error'});
-        if (token.token !== 'error') {
+        let userData;
+        userData = await loginUser(data).catch(err => userData = {token: 'error'});
+        if (userData.token !== 'error') {
             auth = true;
             setAuthorised(auth);
-            localStorage.setItem('token', token.token);
+            setUser(userData.user);
+            localStorage.setItem('token', userData.token);
         }
     }
     return (
