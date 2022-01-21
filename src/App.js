@@ -69,7 +69,8 @@ function App() {
             animationOut: ["animate__animated", "animate__fadeOut"],
             dismiss: {
                 duration: 5000,
-                onScreen: true
+                onScreen: true,
+                pauseOnHover: true
             }
         })
     }
@@ -97,9 +98,9 @@ function App() {
                         <RegisterPage sendNotification={createNotification}/>
                     </RequireUnauth>}/>
                     <Route path="/basket" element={<BasketPage user={user}/>}/>
-                    <Route path="/logout" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path}>
-                        <Logout/>
-                    </RequireUnauth>}/>
+                    <Route path="/logout" element={<RequireAuth auth={auth} setAuthorised={setAuth} path={path}>
+                        <Logout sendNotification={createNotification}/>
+                    </RequireAuth>}/>
                     <Route path="/add" element={<ProductAddPage user={user}/>}/>
                     <Route path="/current" element={<CurrentOrdersPage user={user}/>}/>
                 </Routes>
