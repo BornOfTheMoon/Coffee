@@ -6,8 +6,6 @@ import Basket from "../../components/Basket/Basket.js";
 function confirmNote(event) {
     event.preventDefault()
     const note = event.target.elements.notion.value
-    console.log(event.target.elements.notion.value)
-    console.log("note", note)
     sessionStorage.setItem("note", note)
 }
 
@@ -22,20 +20,13 @@ async function PostOrder(data, API_URL) {
 }
 
 function BasketPage({user}) {
-    // const [user, setUser] = useState(defaultUser)
-    // const token = localStorage.getItem("token")
-    // useState(async () => {
-    //     if (token) {
-    //         let decoded = jwt_decode(token);
-    //         let username = decoded.username;
-    //         await GetRequest(defaultUser, setUser, `http://localhost:8000/api/user/${username}`)
-    //         console.log(user)
-    //     }
-    // })
-
     async function toOrders() {
         const sum = sessionStorage.getItem("sum")
         const basket = sessionStorage.getItem("basket")
+        if (!user.karma) {
+            alert("Вы не можете делать заказы")
+            return
+        }
         if (!basket) {
             return
         }

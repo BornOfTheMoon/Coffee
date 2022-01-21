@@ -24,7 +24,11 @@ router.post('/', async (req, res) => {
         if (user) return res.status(400).json({token: 'error', error: 'User with this username already exists'});
     })
 
-    const user = new userModel({username, name, hashedPassword});
+    const imageNumber = Math.floor(Math.random() * 6 + 1)
+    console.log(imageNumber)
+    const avatar = "./images/user" + imageNumber + ".jpg"
+
+    const user = new userModel({username, name, hashedPassword, avatar});
     user.save((err) => {
         if (err) {
             res.status(500).send(err)

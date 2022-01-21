@@ -1,10 +1,8 @@
 import styles from "./UserCard.module.css"
-import userAvatar from "../../images/userAvatar.jpg"
 import star from "../../images/star.svg"
 
 function UserCard({user}) {
     let title = "Карточка пользователя"
-    let avatar = userAvatar
     if (user.type === "employee") {
         title = "Карточка работника"
     } else if (user.type === "manager") {
@@ -33,7 +31,7 @@ function UserCard({user}) {
         <div className={styles.userCard}>
             <p className={styles.userCard__title}>{title}</p>
             <div className={styles.userCard__content}>
-                <img src={avatar} className={styles.userCard__content_avatar} alt="avatar"/>
+                <img src={user.avatar} className={styles.userCard__content_avatar} alt="avatar"/>
                 <div className={styles.userCard__info}>
                     <div className={styles.userCard__content_mainInfo}>
                         <p>Логин: {user.username}</p>

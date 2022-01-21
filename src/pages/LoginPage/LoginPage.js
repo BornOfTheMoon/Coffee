@@ -52,7 +52,7 @@ function LoginPage({auth, setAuthorised, setUser, sendNotification}) {
                         Войти
                     </button>
                 </form>
-                <NavLink to="/register" className={styles.login__link}>Ещё нет аккаунта? Зарегестрироваться!</NavLink>
+                <NavLink to="/" className={styles.login__link}>Ещё нет аккаунта? Зарегестрироваться!</NavLink>
             </div>
             <UniversalContent className={styles.loginPage__content}/>
         </div>
