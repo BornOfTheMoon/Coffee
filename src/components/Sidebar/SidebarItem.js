@@ -1,8 +1,7 @@
 import styles from "./SidebarItem.module.css";
-import {Link, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 function SidebarItem({text, active, link}) {
-    console.log(active)
     return (
         <div className={active ? styles.sidebarItemActive : styles.sidebarItem}>
             <NavLink to={link} className={styles.NavLink}>

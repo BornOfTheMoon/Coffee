@@ -1,22 +1,13 @@
 import styles from "./BasketPage.module.css"
 import Sidebar from "../../components/Sidebar/Sidebar.js";
 import Basket from "../../components/Basket/Basket.js";
+import postRequest from "../../api/PostRequest";
 
 
 function confirmNote(event) {
     event.preventDefault()
     const note = event.target.elements.notion.value
     sessionStorage.setItem("note", note)
-}
-
-async function PostOrder(data, API_URL) {
-    return fetch(API_URL, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }).then(res => res.json())
 }
 
 function BasketPage({user}) {
@@ -39,11 +30,10 @@ function BasketPage({user}) {
             user: user.username,
             note: note
         }
-        console.log(data)
         sessionStorage.removeItem('basket')
         sessionStorage.removeItem('sum')
         sessionStorage.removeItem('note')
-        await PostOrder(data, "http://localhost:8000/api/order/")
+        await postRequest(data, "http://localhost:8000/api/order/")
     }
 
     return (

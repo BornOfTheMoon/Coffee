@@ -5,26 +5,7 @@ import {useState} from "react";
 import {GetRequest} from "../../api/GetRequest"
 import MenuTabBar from "../../components/MenuTabBar/MenuTabBar";
 
-const defaultProducts = [
-    {
-        image: "/images/productAvatar.jpg",
-        name: "first_name",
-        description: "some text",
-        price: 150
-    },
-    {
-        image: "/images/productAvatar.jpg",
-        name: "second_name",
-        description: "some text",
-        price: 150
-    },
-    {
-        image: "/images/productAvatar.jpg",
-        name: "third_name",
-        description: "some text",
-        price: 150
-    }
-]
+const defaultProducts = []
 
 function MenuPage({user}) {
     const [products, setProducts] = useState(defaultProducts)
@@ -35,8 +16,6 @@ function MenuPage({user}) {
         await GetRequest(defaultProducts, setProducts, API_URL)
         await GetRequest(defaultProducts, setFilterProducts, API_URL)
     })
-
-    console.log(products)
 
     return (
         <div className={styles.menuPage}>

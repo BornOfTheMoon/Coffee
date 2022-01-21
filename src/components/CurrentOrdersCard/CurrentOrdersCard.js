@@ -1,7 +1,7 @@
 import styles from "./CurrentOrdersCard.module.css"
 import OrderCardItem from "./CurrentOrdersCardItem.js";
-import {deleteOrder} from "../../api/OrderRequests";
-import {addOrder} from "../../api/OrderRequests";
+import deleteRequest from "../../api/DeleteRequest";
+import postRequest from "../../api/PostRequest";
 
 
 function CurrentOrdersCard({order}) {
@@ -17,13 +17,13 @@ function CurrentOrdersCard({order}) {
     }
 
     async function reject() {
-        await deleteOrder(order)
+        await deleteRequest(order, "http://localhost:8000/api/order")
         order.status = "rejected"
-        await addOrder(order)
+        await postRequest(order, "http://localhost:8000/api/order")
     }
 
     async function next() {
-        await deleteOrder(order)
+        await deleteRequest(order, "http://localhost:8000/api/order")
         if (order.status === "wait confirm") {
             order.status  = "accepted"
         } else if (order.status === "accepted") {
@@ -31,8 +31,7 @@ function CurrentOrdersCard({order}) {
         } else if (order.status === "finished") {
             order.status  = "received"
         }
-        await addOrder(order)
-        // location.reload()
+        await postRequest(order, "http://localhost:8000/api/order")
     }
 
     return (

@@ -1,16 +1,8 @@
 import styles from "./ProductAddCard.module.css"
 import catLogo from "../../images/cat.svg";
+import postRequest from "../../api/PostRequest";
+import addProduct from "../../images/addProduct.jpg"
 
-function addProduct(data) {
-    console.log(data)
-    return  fetch( "http://localhost:8000/api/product", {
-        method: "Post",
-        body: JSON.stringify(data),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }).then(res => res.json())
-}
 
 function ProductAddCard() {
     async function onClick(event) {
@@ -21,14 +13,13 @@ function ProductAddCard() {
             category: event.target.elements.category.value,
             price: event.target.elements.cost.value
         }
-        await addProduct(data)
+        await postRequest(data, "http://localhost:8000/api/product")
     }
 
     return (
         <div className={styles.productAdd}>
             <div className={styles.file}>
-                <img src="https://pcavto.com/image/cache/catalog/farcar/rl_screenshots/RL_FarCar_screenshots_06-1024x768.jpg" alt={"file"}/>
-                <input type="file"/>
+                <img src={addProduct} alt={"file"}/>
             </div>
             <div className={styles.productAdd__content}>
                 <form className={styles.productAdd__form} onSubmit={onClick}>
@@ -39,7 +30,7 @@ function ProductAddCard() {
                     />
                     <input
                         placeholder="Описание"
-                        type="textarea"
+                        type="text"
                         id="description"
                     />
                     <input

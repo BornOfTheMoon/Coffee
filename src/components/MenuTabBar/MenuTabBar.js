@@ -4,7 +4,6 @@ import Tab from "./MenuTabItem";
 
 
 const MenuTabBar = ({products, setProducts}) => {
-    console.log(products)
     const tabs = [
         {
             name: "All",

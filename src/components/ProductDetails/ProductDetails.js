@@ -34,7 +34,6 @@ function ProductDetails({product}) {
             return;
         }
         let order = basket.split(" ")
-        console.log(order)
         let newOrder = []
         let flag = true
         order.map((name) => {
@@ -48,7 +47,6 @@ function ProductDetails({product}) {
                 newOrder.push(name)
             }
         })
-        console.log(newOrder)
         if (newOrder) {
             basket = newOrder[0]
             newOrder.slice(1, ).map((name) => basket += " " + name)

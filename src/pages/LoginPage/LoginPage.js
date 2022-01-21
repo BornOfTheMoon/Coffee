@@ -2,16 +2,8 @@ import styles from "./LoginPage.module.css"
 import UniversalContent from "../../components/UniversalContent/UniversalContent";
 import {NavLink} from "react-router-dom";
 import logo from "../../images/logo.svg";
+import postRequest from "../../api/PostRequest";
 
-async function loginUser(data) {
-    return fetch('http://localhost:8000/api/login', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }).then(res => res.json())
-}
 
 function LoginPage({auth, setAuthorised, setUser, sendNotification}) {
     const handleSubmit = async event => {
@@ -21,7 +13,8 @@ function LoginPage({auth, setAuthorised, setUser, sendNotification}) {
             password: event.target.elements.password.value
         }
         let userData;
-        userData = await loginUser(data).catch(err => userData = {token: 'error'});
+        userData = await postRequest(data, 'http://localhost:8000/api/login')
+            .catch(err => userData = {token: 'error'});
         if (userData.token !== 'error') {
             auth = true;
             setAuthorised(auth);

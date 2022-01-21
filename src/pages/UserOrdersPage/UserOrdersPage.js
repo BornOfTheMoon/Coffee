@@ -14,8 +14,6 @@ function UserOrdersPage({user}) {
         await GetRequest(defaultOrder, setOrder, `http://localhost:8000/api/order/user/${user.username}`)
     })
 
-    console.log(order)
-
     return (
         <div className={styles.userOrdersPage}>
             <Sidebar item="orders" user={user}/>

@@ -3,7 +3,6 @@ import styles from "./HomePage.module.css"
 import UniversalContent from "../../components/UniversalContent/UniversalContent";
 
 function HomePage({user}) {
-    console.log(user)
     return (
         <div className={styles.homePage}>
             <Sidebar item="home" user={user}/>

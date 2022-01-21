@@ -1,7 +1,7 @@
 import styles from "./OrderCard.module.css"
 import OrderCardItem from "./OrderCardItem";
-import {deleteOrder} from "../../api/OrderRequests";
-import {addOrder} from "../../api/OrderRequests";
+import postRequest from "../../api/PostRequest";
+import deleteRequest from "../../api/DeleteRequest";
 
 
 function OrderCard({order}) {
@@ -21,9 +21,9 @@ function OrderCard({order}) {
     }
 
     async function reject() {
-        await deleteOrder(order)
+        await deleteRequest(order, "http://localhost:8000/api/order")
         order.status = "rejected by user"
-        await addOrder(order)
+        await postRequest(order, "http://localhost:8000/api/order")
     }
 
     return (

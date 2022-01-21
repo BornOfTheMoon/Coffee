@@ -2,15 +2,10 @@ import styles from "./RegisterPage.module.css"
 import UniversalContent from "../../components/UniversalContent/UniversalContent";
 import {NavLink} from "react-router-dom";
 import logo from "../../images/logo.svg";
+import postRequest from "../../api/PostRequest";
 
 async function saveUser(data) {
-    return fetch('http://localhost:8000/api/register', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }).then(res => res.json());
+    return postRequest(data, 'http://localhost:8000/api/register')
 }
 
 function RegisterPage({auth, setAuthorised, setUser, sendNotification}) {

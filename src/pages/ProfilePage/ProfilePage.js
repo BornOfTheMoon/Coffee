@@ -8,10 +8,9 @@ function ProfilePage({user, setAuth}) {
     function Logout() {
         setAuth(false);
         localStorage.removeItem('token');
+        sessionStorage.clear()
         return <Navigate to={"/home"}/>
     }
-    console.log(user)
-
 
     return (
         <div className={styles.profilePage}>

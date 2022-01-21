@@ -1,5 +1,4 @@
 export const GetRequest = (defaultData, setData, URL) => {
-    console.log("get")
     setData(defaultData)
     fetch(URL, {
         method: "GET",

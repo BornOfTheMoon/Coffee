@@ -4,10 +4,7 @@ import {useState} from "react";
 import {GetRequest} from "../../api/GetRequest";
 
 
-const defaultProduct = {
-    name: "name",
-    price: 0
-}
+const defaultProduct = {}
 
 function BasketItem({name}) {
     const navigate = useNavigate();

@@ -2,7 +2,6 @@ import styles from "./Achievements.module.css"
 import AchievementsItem from "./AchievementsItem.js"
 
 function Achievements({user}) {
-    console.log(user.achievements)
     return (
         <div className={styles.achievements}>
             <p className={styles.achievements__title}>Полученные достижения:</p>

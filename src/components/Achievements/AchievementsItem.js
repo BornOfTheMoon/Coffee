@@ -2,10 +2,7 @@ import styles from "./AchievementsItem.module.css"
 import {useState} from "react";
 import {GetRequest} from "../../api/GetRequest";
 
-const defaultAchievement = {
-    name: "Гость",
-    description: "зарегестрироваться"
-}
+const defaultAchievement = {}
 
 function AchievementsItem({name}) {
     const [achievement, setAchievement] = useState(defaultAchievement)

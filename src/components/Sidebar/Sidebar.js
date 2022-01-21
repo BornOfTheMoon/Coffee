@@ -3,6 +3,7 @@ import SidebarItem from "./SidebarItem.js"
 import styles from "./Sidebar.module.css"
 import {NavLink} from "react-router-dom";
 
+
 const userData = [{text: "меню", type: "menu"},
                 {text: "корзина", type: "basket"},
                 {text: "личный кабинет", type: "profile"},
@@ -13,27 +14,16 @@ const employeeData = [{text: "меню", type: "menu"},
                     {text: "мои заказы", type: "orders"},
                     {text: "текущие заказы", type: "current"},
                     {text: "добавить товар", type: "add"}]
-const managerData = [{text: "меню", type: "menu"},
-                    {text: "корзина", type: "basket"},
-                    {text: "личный кабинет", type: "profile"},
-                    {text: "мои заказы", type: "orders"},
-                    {text: "сотрудники", type: "employees"},
-                    {text: "добавить товар", type: "add_product"}]
-
-// const user = "employee"
 
 function Sidebar({item, user}) {
-    console.log(user)
     let options = []
     const type = user.type
-    if (type === "manager") {
-        options = managerData
-    } else if (type === "employee") {
+    if (type === "employee") {
         options = employeeData
     } else if (type === "user") {
         options = userData
     }
-    console.log(type)
+
     return (
         <div className={styles.sidebar}>
             <NavLink to="/home" className={styles.sidebar__logo}>
