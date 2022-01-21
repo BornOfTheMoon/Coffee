@@ -28,10 +28,10 @@ const defaultUser = {
 }
 
 function App() {
-    const [auth, setAuth] = useState(false);
-    const [path, setPath] = useState('/home');
-    const [user, setUser] = useState(defaultUser);
-    const [error, setError] = useState('');
+    let [auth, setAuth] = useState(false);
+    let [path, setPath] = useState('/home');
+    let [user, setUser] = useState(defaultUser);
+    let [error, setError] = useState('');
 
     useEffect(() => {
         let cleanupFunc = false;
@@ -39,8 +39,14 @@ function App() {
         const getAuth = async () => {
             try {
                 const res = await verifyUser(localStorage.getItem('token'));
-                if (!cleanupFunc) setAuth(res !== null && res !== undefined && res);
-                if (auth) setUser(res);
+                if (!cleanupFunc) {
+                    auth = (res !== null && res !== undefined && res);
+                    setAuth(res !== null && res !== undefined && res);
+                }
+                if (auth) {
+                    user = res?.user;
+                    setUser(user);
+                }
             } catch (e) {
                 setError(e);
             }
