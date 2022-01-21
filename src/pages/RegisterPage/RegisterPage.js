@@ -13,7 +13,7 @@ async function saveUser(data) {
     }).then(res => res.json());
 }
 
-function RegisterPage({auth, setAuthorised, setUser}) {
+function RegisterPage({auth, setAuthorised, setUser, sendNotification}) {
 
     const onSubmit = async event => {
         event.preventDefault();
@@ -24,13 +24,14 @@ function RegisterPage({auth, setAuthorised, setUser}) {
             passwordAgain: event.target.elements.duplicatePassword.value
         }
         let userData;
-        userData = await saveUser(data).catch(err => userData = {token: 'error'});
+        userData = await saveUser(data);
         if (userData.token !== 'error') {
             auth = true;
             setAuthorised(auth);
             setUser(userData.user);
+            sendNotification('Account created successfully!', `Welcome, ${userData.user.username}!`, 'success')
             localStorage.setItem('token', userData.token);
-        }
+        } else sendNotification('Oops!', userData.error, 'danger')
     }
 
     return (

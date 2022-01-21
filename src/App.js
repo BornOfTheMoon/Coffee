@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import ReactNotification, {store} from "react-notifications-component";
+import 'react-notifications-component/dist/theme.css'
 import './App.css';
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -56,9 +58,25 @@ function App() {
         return () => cleanupFunc = true;
     }, [])
 
+    function createNotification(title, text, type) {
+        store.addNotification({
+            title: title,
+            message: text,
+            type: type,
+            insert: "top",
+            container: "top-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+                duration: 5000,
+                onScreen: true
+            }
+        })
+    }
 
     return (
         <Router>
+            <ReactNotification/>
             <div className="app">
                 <Routes>
                     <Route path="/home" element={<HomePage user={user}/>}/>
@@ -66,9 +84,9 @@ function App() {
                         <ProfilePage setAuth={setAuth} user={user}/>
                     </RequireAuth>}/>
                     <Route path="/login" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path} setUser={setUser}>
-                        <LoginPage/>
+                        <LoginPage sendNotification={createNotification}/>
                     </RequireUnauth>}/>
-                    <Route path="/register" element={<RegisterPage/>}/>
+                    <Route path="/register" element={<RegisterPage sendNotification={createNotification}/>}/>
                     <Route path="/menu" element={<MenuPage user={user}/>}/>
                     <Route path="/product" element={<ProductDetailsPage user={user}/>}/>
                     <Route path="/product/:id" element={<ProductDetailsPage user={user}/>}/>
@@ -76,7 +94,7 @@ function App() {
                         <UserOrdersPage user={user}/>
                     </RequireAuth>}/>
                     <Route path="/" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path} setUser={setUser}>
-                        <RegisterPage/>
+                        <RegisterPage sendNotification={createNotification}/>
                     </RequireUnauth>}/>
                     <Route path="/basket" element={<BasketPage user={user}/>}/>
                     <Route path="/logout" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path}>

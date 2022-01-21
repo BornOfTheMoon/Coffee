@@ -10,7 +10,7 @@ function RequireAuth({ auth, setAuthorised, path, setPath, user, children }) {
         return <Navigate to="/login"/>;
     }
 
-    return React.cloneElement(children, {auth: auth, setAuthorised: setAuthorised, user: user});
+    return React.cloneElement(children, {...children.props, auth: auth, setAuthorised: setAuthorised, user: user});
 }
 
 export default RequireAuth

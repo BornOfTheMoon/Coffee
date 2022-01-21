@@ -6,7 +6,7 @@ function RequireUnauth({ auth, setAuthorised, path, setUser, children }) {
         return <Navigate to={path}/>;
     }
 
-    return React.cloneElement(children, {auth: auth, setAuthorised: setAuthorised, setUser: setUser});
+    return React.cloneElement(children, {...children.props, auth: auth, setAuthorised: setAuthorised, setUser: setUser});
 }
 
 export default RequireUnauth

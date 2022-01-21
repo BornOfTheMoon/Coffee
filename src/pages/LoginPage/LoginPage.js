@@ -13,7 +13,7 @@ async function loginUser(data) {
     }).then(res => res.json())
 }
 
-function LoginPage({auth, setAuthorised, setUser}) {
+function LoginPage({auth, setAuthorised, setUser, sendNotification}) {
     const handleSubmit = async event => {
         event.preventDefault();
         const data = {
@@ -26,8 +26,10 @@ function LoginPage({auth, setAuthorised, setUser}) {
             auth = true;
             setAuthorised(auth);
             setUser(userData.user);
+            sendNotification(`Welcome, ${userData.user.username}!`, 'Nice to see you!', 'success');
             localStorage.setItem('token', userData.token);
-        }
+        } else sendNotification('Oops!', 'Check if login and password are correct', 'danger');
+
     }
     return (
         <div className={styles.loginPage}>
