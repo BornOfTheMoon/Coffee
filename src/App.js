@@ -58,9 +58,11 @@ function App() {
                         <ProfilePage setAuth={setAuth}/>
                     </RequireAuth>}/>
                     <Route path="/login" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path}>
-                        <LoginPage/>
+                        <LoginPage auth={auth} setAuthorised={setAuth}/>
                     </RequireUnauth>}/>
-                    <Route path="/register" element={<RegisterPage/>}/>
+                    <Route path="/register" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path}>
+                        <RegisterPage auth={auth} setAuthorised={setAuth}/>
+                    </RequireUnauth>}/>
                     <Route path="/menu" element={<MenuPage/>}/>
                     <Route path="/product" element={<ProductDetailsPage/>}/>
                     <Route path="/product/:id" element={<ProductDetailsPage/>}/>
