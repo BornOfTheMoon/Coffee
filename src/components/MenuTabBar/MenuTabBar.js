@@ -22,8 +22,8 @@ const MenuTabBar = ({products, setProducts}) => {
             onclick: () => setProducts(products.filter((value) => value.category === "food")),
         },
         {
-            name: "Deserts",
-            onclick: () => setProducts(products.filter((value) => value.category === "deserts")),
+            name: "Desserts",
+            onclick: () => setProducts(products.filter((value) => value.category === "desserts")),
         },
         {
             name: "Syrup",
