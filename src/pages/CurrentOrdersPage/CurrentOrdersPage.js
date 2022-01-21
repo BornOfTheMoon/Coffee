@@ -44,7 +44,7 @@ const defaultOrders = [
     },
 ]
 
-function CurrentOrdersPage() {
+function CurrentOrdersPage({user}) {
     const [orders, setOrders] = useState(defaultOrders)
 
     useState(async () => {
@@ -53,7 +53,7 @@ function CurrentOrdersPage() {
 
     return (
         <div className={styles.currentOrdersPage}>
-            <Sidebar/>
+            <Sidebar item={"current"} user={user}/>
             <CurrentOrders orders={orders}/>
         </div>
     )

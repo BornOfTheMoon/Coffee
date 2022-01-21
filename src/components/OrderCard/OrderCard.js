@@ -1,24 +1,8 @@
 import styles from "./OrderCard.module.css"
 import OrderCardItem from "./OrderCardItem";
-import {useState} from "react";
-import {GetRequest} from "../../api/GetRequest";
 
 
-const defaultOrder = {
-        products: [],
-        total: 0,
-        status: "В работе"
-    }
-
-function OrderCard({id}) {
-    const [order, setOrder] = useState(defaultOrder)
-    const API_URL = `http://localhost:8000/api/order/${id}`
-
-    useState(async () => {
-        await GetRequest(defaultOrder, setOrder, API_URL)
-
-    })
-
+function OrderCard({order}) {
     const products = order.products
 
     return (

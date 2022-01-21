@@ -55,29 +55,29 @@ function App() {
         <Router>
             <div className="app">
                 <Routes>
-                    <Route path="/home" element={<HomePage/>}/>
+                    <Route path="/home" element={<HomePage user={user}/>}/>
                     <Route path="/profile" element={<RequireAuth auth={auth} setAuthorised={setAuth} path={path} setPath={setPath} user={user}>
-                        <ProfilePage setAuth={setAuth}/>
+                        <ProfilePage setAuth={setAuth} user={user}/>
                     </RequireAuth>}/>
                     <Route path="/login" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path} setUser={setUser}>
                         <LoginPage/>
                     </RequireUnauth>}/>
                     <Route path="/register" element={<RegisterPage/>}/>
-                    <Route path="/menu" element={<MenuPage/>}/>
-                    <Route path="/product" element={<ProductDetailsPage/>}/>
-                    <Route path="/product/:id" element={<ProductDetailsPage/>}/>
+                    <Route path="/menu" element={<MenuPage user={user}/>}/>
+                    <Route path="/product" element={<ProductDetailsPage user={user}/>}/>
+                    <Route path="/product/:id" element={<ProductDetailsPage user={user}/>}/>
                     <Route path="/orders" element={<RequireAuth auth={auth} setAuthorised={setAuth} path={path} setPath={setPath} user={user}>
-                        <UserOrdersPage/>
+                        <UserOrdersPage user={user}/>
                     </RequireAuth>}/>
                     <Route path="/" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path} setUser={setUser}>
                         <RegisterPage/>
                     </RequireUnauth>}/>
-                    <Route path="/basket" element={<BasketPage/>}/>
+                    <Route path="/basket" element={<BasketPage user={user}/>}/>
                     <Route path="/logout" element={<RequireUnauth auth={auth} setAuthorised={setAuth} path={path}>
                         <Logout/>
                     </RequireUnauth>}/>
-                    <Route path="/add" element={<ProductAddPage/>}/>
-                    <Route path="/current" element={<CurrentOrdersPage/>}/>
+                    <Route path="/add" element={<ProductAddPage user={user}/>}/>
+                    <Route path="/current" element={<CurrentOrdersPage user={user}/>}/>
                 </Routes>
             </div>
         </Router>

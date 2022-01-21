@@ -25,7 +25,7 @@ function ProductDetailsPage({user, setUser}) {
 
     return (
         <div className={styles.productDetailsPage}>
-            <Sidebar item=""/>
+            <Sidebar item="" user={user}/>
             <div className={styles.productDetailsPage__content}>
                 <ProductDetails product={product}/>
             </div>
