@@ -9,6 +9,7 @@ const OrderSchema = new mongoose.Schema({
         status: {type: String, default: "wait confirm"},
         place: String,
         products: Array,
+        user: String
     }
 )
 

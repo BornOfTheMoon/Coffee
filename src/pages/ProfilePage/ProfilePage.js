@@ -21,7 +21,7 @@ function ProfilePage() {
     useState(async () => {
         if (token) {
             let decoded = jwt_decode(token);
-            let username = decoded.username
+            let username = decoded.username;
             await GetRequest(defaultUser, setUser, `http://localhost:8000/api/user/${username}`)
             console.log(user)
         }

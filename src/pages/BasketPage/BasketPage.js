@@ -25,23 +25,6 @@ async function PostOrder(data, API_URL) {
     }).then(res => res.json())
 }
 
-async function toOrders() {
-    const sum = sessionStorage.getItem("sum")
-    const basket = sessionStorage.getItem("basket")
-    if (!basket) {
-        return
-    }
-    let order = basket.split(" ")
-    const data = {
-        price: +sum,
-        products: order,
-        place: "D1"
-    }
-    sessionStorage.removeItem('basket')
-    sessionStorage.removeItem('sum')
-    await PostOrder(data, "http://localhost:8000/api/order/")
-}
-
 function BasketPage() {
     const [user, setUser] = useState(defaultUser)
     const token = localStorage.getItem("token")
@@ -53,6 +36,24 @@ function BasketPage() {
             console.log(user)
         }
     })
+
+    async function toOrders() {
+        const sum = sessionStorage.getItem("sum")
+        const basket = sessionStorage.getItem("basket")
+        if (!basket) {
+            return
+        }
+        let order = basket.split(" ")
+        const data = {
+            price: +sum,
+            products: order,
+            place: "D1",
+            user: user.username
+        }
+        sessionStorage.removeItem('basket')
+        sessionStorage.removeItem('sum')
+        await PostOrder(data, "http://localhost:8000/api/order/")
+    }
 
     return (
         <div className={styles.basketPage}>

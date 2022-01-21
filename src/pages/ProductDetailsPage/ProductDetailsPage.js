@@ -13,7 +13,7 @@ const defaultProduct = {
     price: 150
 }
 
-function ProductDetailsPage() {
+function ProductDetailsPage({user, setUser}) {
     const [product, setProduct] = useState(defaultProduct)
     const API_URL = 'http://localhost:8000/api/product/' + useParams().id
 

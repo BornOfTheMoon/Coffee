@@ -1,4 +1,5 @@
 import styles from "./ProductDetails.module.css"
+import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard";
 
 
 function ProductDetails({product}) {
@@ -58,24 +59,16 @@ function ProductDetails({product}) {
 
     return (
         <div className={styles.productDetails}>
-            <div className={styles.productCard__content}>
-                <img src={product.image} alt="avatar"/>
-                <div className={styles.productCard__content_info}>
-                    <p>Название: {product.name}</p>
-                    <p>Описание: {product.description}</p>
-                    <p>Цена: {product.price}</p>
-                </div>
-            </div>
-
+            <ProductDetailsCard product={product}/>
             <div className={styles.buttons}>
                 <button type="submit" className={styles.productCard__button}
                     onClick={toBasket}>
-                В корзину
-            </button>
-            <button type="submit" className={styles.productCard__button}
-                    onClick={fromBasket}>
-                Из корзины
-            </button>
+                    В корзину
+                </button>
+                <button type="submit" className={styles.productCard__button}
+                        onClick={fromBasket}>
+                    Из корзины
+                </button>
             </div>
         </div>
     )

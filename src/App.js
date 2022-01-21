@@ -16,6 +16,14 @@ import verifyUser from "./verifyUser";
 import ProductAddPage from "./pages/ProductAddPage/ProductAddPage";
 
 
+const defaultUser = {
+    username: "user",
+    name: "name",
+    type: "user",
+    place: "D1",
+    achievements: [],
+    karma: -1,
+}
 
 function App() {
     const [auth, setAuth] = useState(false);

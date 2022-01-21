@@ -45,8 +45,20 @@ router.delete("/:id", (req, res) => {
     })
 })
 
+router.get("/user/:name", (req, res) => {
+    orderModel.find({user: req.params.name}, (err, order) => {
+        if (err) {
+            res.status(500).send('Orders not found, try again')
+        } else if (order.length === 0) {
+            res.status(404).send('Orders not found')
+        } else {
+            res.send(order)
+        }
+    })
+})
+
 router.post('/',async (req, res) => {
-    const {price, place, products} = req.body;
+    const {price, place, products, user} = req.body;
     let id = 0
     const date = Date()
 
@@ -60,7 +72,7 @@ router.post('/',async (req, res) => {
                 console.log(id)
             }
             console.log(id)
-            let order = new orderModel({id: id, date: date, price: price, place: place, products: products});
+            let order = new orderModel({id: id, date: date, price: price, place: place, products: products, user: user});
             console.log(order)
             order.save((err) => {
                 if (err) {

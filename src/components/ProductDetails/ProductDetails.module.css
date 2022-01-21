@@ -1,26 +1,5 @@
 .productDetails {
-    width: 35vw;
-    padding: 1.5vh 2vw 2vh;
-    margin-bottom: 10vh;
-    margin-left: 10vw;
-    border-radius: 20px;
-    background: #EAE2D8;
-    background-blend-mode: overlay;
-    box-shadow: -1px 1px 8px black;
-}
-
-.productCard__content {
-    padding: 1vh 1vh 3vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: normal;
-}
-
-.productCard__content > img {
-    border-radius: 35px;
-    width: 13vw;
-    margin-top: 1vh;
-    margin-right: 2vh;
+    padding-top: 4vh;
 }
 
 .productCard__button {
@@ -33,7 +12,9 @@
 
 .buttons {
     /*padding: 0 -1vh 0 -1vh;*/
+    width: 35vw;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-left: 12vw;
 }

@@ -15,8 +15,28 @@ const defaultUser = {
     orders: []
 }
 
+const defaultOrder = [
+    {
+        products: ["aaa"],
+        price: 200,
+        status: "wait"
+    },
+    {
+        products: ["ccc", "ddd"],
+        price: 200,
+        status: "wait"
+    },
+    {
+        products: ["aaa", "bbb", "ccc", "ddd"],
+        price: 200,
+        status: "wait"
+    },
+
+]
+
 function UserOrdersPage() {
     const [user, setUser] = useState(defaultUser)
+    // const [order, setOrder] = useState(defaultOrder)
     const token = localStorage.getItem("token")
     const decoded = jwt_decode(token);
     let username = decoded.username
@@ -24,6 +44,12 @@ function UserOrdersPage() {
     useState(async () => {
         await GetRequest(defaultUser, setUser, `http://localhost:8000/api/user/${username}`)
     })
+
+    // useState(async ()=> {
+    //     await GetRequest(defaultOrder, setOrder, `http://localhost:8000/api/order/user/${username}`)
+    // })
+    //
+    // console.log(order)
 
     const orders = user.orders
 
