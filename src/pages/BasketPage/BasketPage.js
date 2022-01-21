@@ -15,6 +15,14 @@ const defaultUser = {
     karma: 3,
 }
 
+function confirmNote(event) {
+    event.preventDefault()
+    const note = event.target.elements.notion.value
+    console.log(event.target.elements.notion.value)
+    console.log("note", note)
+    sessionStorage.setItem("note", note)
+}
+
 async function PostOrder(data, API_URL) {
     return fetch(API_URL, {
         method: 'POST',
@@ -44,14 +52,18 @@ function BasketPage() {
             return
         }
         let order = basket.split(" ")
+        const note = sessionStorage.getItem("note")
         const data = {
             price: +sum,
             products: order,
             place: "D1",
-            user: user.username
+            user: user.username,
+            note: note
         }
+        console.log(data)
         sessionStorage.removeItem('basket')
         sessionStorage.removeItem('sum')
+        sessionStorage.removeItem('note')
         await PostOrder(data, "http://localhost:8000/api/order/")
     }
 
@@ -59,7 +71,18 @@ function BasketPage() {
         <div className={styles.basketPage}>
             <Sidebar item="basket"/>
             <div className={styles.basketPage__content}>
-                <Basket func={toOrders}/>
+                <Basket createOrder={toOrders}/>
+                <form onSubmit={(event)=> {
+                    confirmNote(event)
+                }}>
+                    <input
+                        placeholder="Если в заказе есть сироп, укажите, пожалуйста, в какой кофе его добавлять"
+                        type="text"
+                        id="notion"
+                        className={styles.basketPage__input}
+                    />
+                    <button className={styles.basketPage__button}>Подтвердить</button>
+                </form>
             </div>
         </div>
     )

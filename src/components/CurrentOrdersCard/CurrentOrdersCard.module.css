@@ -22,9 +22,14 @@
     margin: 0 0 3vh;
 }
 
+.orderCard__note {
+    font-size: 12px;
+    margin: 3vh 0 0;
+}
+
 .orderCard__total {
     font-size: 16px;
-    margin: 3vh 0 0;
+    margin: 1vh 0 0;
 }
 
 .currentOrderCard__buttons {

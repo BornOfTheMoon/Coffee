@@ -4,7 +4,7 @@ import catLogo from "../../images/cat.svg"
 import {NavLink} from "react-router-dom";
 
 
-function Basket({func}) {
+function Basket({createOrder}) {
     const sum = sessionStorage.getItem("sum")
     const basket = sessionStorage.getItem("basket")
     let empty = ""
@@ -22,14 +22,14 @@ function Basket({func}) {
                 {order.map((option) => <BasketItem name={option}/>)}
                 <p>{empty}</p>
             </div>
-            <div className={styles.basket__footer}>
+            <form className={styles.basket__footer}>
                 <p>Сумма заказа: {sum}</p>
                 <NavLink to={"/menu"}>
-                    <button type="submit" className={styles.basket__footer_button} onClick={func}>
+                    <button type="submit" className={styles.basket__footer_button} onClick={createOrder}>
                         Сделать заказ
                     </button>
                 </NavLink>
-            </div>
+            </form>
             <img src={catLogo} alt="cat" className={styles.basket__catLogo}/>
         </div>
     )

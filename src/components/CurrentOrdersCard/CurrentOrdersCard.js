@@ -61,6 +61,7 @@ function CurrentOrdersCard({order}) {
                 <div className={styles.orderCard__content}>
                     {products.map((option)=> <OrderCardItem name={option}/>)}
                 </div>
+                <p className={styles.orderCard__note}>Уточнение: {order.note}</p>
                 <p className={styles.orderCard__total}>Сумма заказа: {order.price}</p>
             </div>
             <div className={styles.currentOrderCard__buttons}>

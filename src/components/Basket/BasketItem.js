@@ -12,16 +12,13 @@ const defaultProduct = {
 function BasketItem({name}) {
     const navigate = useNavigate();
 
-    console.log(name)
     const [product, setProduct] = useState(defaultProduct)
 
     useState(async () => {
         await GetRequest(defaultProduct, setProduct, `http://localhost:8000/api/product/${name}`)
     })
 
-    console.log(product)
     const price = product.price
-    console.log(price)
 
     return (
         <div className={styles.basketItem}>
