@@ -5,44 +5,7 @@ import {useState} from "react";
 import {GetRequest} from "../../api/GetRequest";
 
 
-const defaultOrders = [
-    {
-        price: 500,
-        products: [],
-        user: "badmin",
-        status: "wait confirm"
-    },
-    {
-        price: 500,
-        products: [],
-        user: "badmin",
-        status: "wait confirm"
-    },
-    {
-        price: 500,
-        products: [],
-        user: "badmin",
-        status: "accepted"
-    },
-    {
-        price: 700,
-        products: [],
-        user: "badmin",
-        status: "finished"
-    },
-    {
-        price: 500,
-        products: [],
-        user: "badmin",
-        status: "accepted"
-    },
-    {
-        price: 300,
-        products: [],
-        user: "badmin",
-        status: "finished"
-    },
-]
+const defaultOrders = []
 
 function CurrentOrdersPage({user}) {
     const [orders, setOrders] = useState(defaultOrders)

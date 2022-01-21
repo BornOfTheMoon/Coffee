@@ -1,27 +1,8 @@
 import styles from "./CurrentOrdersCard.module.css"
 import OrderCardItem from "./CurrentOrdersCardItem.js";
+import {deleteOrder} from "../../api/OrderRequests";
+import {addOrder} from "../../api/OrderRequests";
 
-
-function deleteOrder(order) {
-    return  fetch( "http://localhost:8000/api/order", {
-        method: "DELETE",
-        body: JSON.stringify(order),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }).then(res => res.json())
-}
-
-function addOrder(order) {
-    console.log(order)
-    return  fetch( "http://localhost:8000/api/order", {
-        method: "Post",
-        body: JSON.stringify(order),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }).then(res => res.json())
-}
 
 function CurrentOrdersCard({order}) {
     const products = order.products
