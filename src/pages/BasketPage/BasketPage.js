@@ -21,7 +21,7 @@ function BasketPage({user}) {
         if (!basket) {
             return
         }
-        let order = basket.split(" ")
+        let order = basket.split("_")
         const note = sessionStorage.getItem("note")
         const data = {
             price: +sum,

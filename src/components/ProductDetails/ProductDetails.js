@@ -10,7 +10,7 @@ function ProductDetails({product}) {
         if (!basket) {
             basket = product.name
         } else {
-            basket += " " + product.name
+            basket += "_" + product.name
         }
         if (!sum) {
             sum = product.price

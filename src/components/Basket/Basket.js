@@ -12,7 +12,7 @@ function Basket({createOrder}) {
     if (!basket) {
         empty = "Пусто :("
     } else {
-        order = basket.split(" ")
+        order = basket.split("_")
     }
 
     return (
